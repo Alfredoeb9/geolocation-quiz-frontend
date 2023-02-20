@@ -1,0 +1,39 @@
+header {
+  background: #fff;
+  z-index: 5;
+  position: relative;
+}
+header > .nav__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+header > .nav__container > a {
+  max-width: 380px;
+  width: 100%;
+  color: #333;
+  text-decoration: none;
+}
+
+header > .nav__container > a > h1 {
+  font-size: 32px;
+}
+
+.title_span {
+  font-size: 32px;
+  color: goldenrod;
+}
+
+@media screen and (max-width: 425px) {
+  header > .nav__container > a > h1 {
+    font-size: 1.2rem;
+  }
+
+  .title_span {
+    font-size: 1.2rem;
+    color: goldenrod;
+  }
+}
