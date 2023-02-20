@@ -8,19 +8,22 @@ import {
 import { useDispatch } from "react-redux";
 // import { login } from "./app/features/AuthContext";
 import RootLayout from "./layouts/RootLayout";
+
+import PrivateRoutes from "./components/PrivateRoutes";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import PrivateRoutes from "./components/PrivateRoutes";
+import Featured from "./components/Featured";
+import GeoQuiz from "./pages/geoQuiz/GeoQuiz";
 import NotFound from "./pages/NotFound";
 
 import "./App.css";
-import Featured from "./components/Featured";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route element={<PrivateRoutes />}>
         <Route index element={<Featured />} />
+        <Route path="/geoquiz/:id" element={<GeoQuiz />} />
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
       <Route path="*" element={<NotFound />} />

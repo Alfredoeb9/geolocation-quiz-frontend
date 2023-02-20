@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import "./featured.css";
 
@@ -8,7 +9,11 @@ function Featured() {
 
   console.log(data);
 
-  return <>{data.country}</>;
+  return (
+    <>
+      <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
+    </>
+  );
 }
 
 export default Featured;
