@@ -28,22 +28,36 @@
   transform: rotateX(6deg) rotateY(6deg) rotateZ(6deg);
 }
 
+.products {
+  z-index: 10;
+  position: relative;
+  background-color: aqua;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 100px;
+  margin: 30px;
+  justify-items: center;
+  align-content: center;
+}
+
+.products__challenges {
+  padding: 40px;
+}
+
 .stars {
   z-index: 0;
-  background: #000 url("https://i.imgur.com/YKY28eT.png") repeat top center;
+  background: #000 url("/public/assets/stars.png") repeat top center;
 }
 
 .twinkling {
   z-index: 1;
-  background: transparent url("https://i.imgur.com/XYMF4ca.png") repeat top
-    center;
+  background: transparent url("/public/assets/twinkling.png") repeat top center;
   animation: move-twink-back 200s linear infinite;
 }
 
 .clouds {
   z-index: 2;
-  background: transparent url("https://i.imgur.com/mHbScrQ.png") repeat top
-    center;
+  background: transparent url("/public/assets/clouds.png") repeat top center;
   animation: move-clouds-back 200s linear infinite;
 }
 
