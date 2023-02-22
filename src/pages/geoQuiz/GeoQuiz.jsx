@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import usePostFetch from "../../hooks/usePostFetch";
 import Switch from "@mui/material/Switch";
-import { createGeoQuiz } from "../../app/features/geolocationQuizSlice";
+import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 import useFetch from "../../hooks/useFetch";
 
 function GeoQuiz() {
@@ -79,20 +79,20 @@ function GeoQuiz() {
 
     // const json = await response.json();
 
-    // if (!response.ok) {
-    //   setError(json.error);
-    //   setEmptyFields(json.emptyFields);
-    // }
+    if (!response.ok) {
+      setError(json.error);
+      setEmptyFields(json.emptyFields);
+    }
 
-    // if (response.ok) {
-    setNumofGeoQuiz(1);
-    setError(null);
-    setActivity("");
-    setEmptyFields([]);
-    console.log("quiz returned! ", json);
+    if (response.ok) {
+      setNumofGeoQuiz(1);
+      setError(null);
+      setActivity("");
+      setEmptyFields([]);
+      console.log("quiz returned! ", json);
 
-    // dispatch(createGeoQuiz(json));
-    // }
+      dispatch(getGeoQuiz(json));
+    }
   };
 
   return (

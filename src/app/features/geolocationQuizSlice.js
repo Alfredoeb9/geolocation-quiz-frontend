@@ -11,7 +11,19 @@ export const geoQuizSlice = createSlice({
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
     getGeoQuiz: (state, action) => {
-      state.geoQuiz = action.payload;
+      console.log(action.payload.questions[0].question);
+      // state.geoQuiz = action.payload;
+      state.geoQuiz = {
+        _id: action.payload._id,
+        country: action.payload.country,
+        questions: [
+          {
+            question: action.payload.questions.map((question) => {
+              return question.question;
+            }),
+          },
+        ],
+      };
     },
 
     createGeoQuiz: (state, action) => {
