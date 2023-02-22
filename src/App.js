@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import Featured from "./components/Featured";
 import GeoQuizHome from "./pages/geoQuiz/GeoQuizHome";
 import GeoQuiz from "./pages/geoQuiz/GeoQuiz";
+import Quiz from "./pages/geoQuiz/Quiz";
 import NotFound from "./pages/NotFound";
 
 import "./App.css";
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="/geoquiz/" element={<GeoQuizHome />} />
         <Route path="/geoquiz/:id" element={<GeoQuiz />} />
+        <Route path="/geoquiz/:id/quiz" element={<Quiz />} />
 
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
