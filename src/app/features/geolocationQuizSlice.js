@@ -1,5 +1,6 @@
 /* eslint-disable no-self-assign */
 import { createSlice } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
 
 const initialState = {
   geoQuiz: null,
@@ -42,6 +43,7 @@ export const geoQuizSlice = createSlice({
     },
     moveNextAction: (state) => {
       console.log("running this right now");
+      // let randomNum = Math.floor(Math.random() * 9) + 1
       return {
         ...state,
         trace: state.trace + 1,
@@ -53,6 +55,13 @@ export const geoQuizSlice = createSlice({
         ...state,
         trace: state.trace - 1,
       };
+    },
+    resetAllAction: (state, action) => {
+      storage.removeItem("persist:root");
+      storage.removeItem("persist_root");
+      localStorage.removeItem("persist:root");
+      localStorage.removeItem("persist_root");
+      return initialState;
     },
 
     createGeoQuiz: (state, action) => {
@@ -83,6 +92,7 @@ export const {
   updateGeoQuiz,
   moveNextAction,
   movePrevAction,
+  resetAllAction,
 } = geoQuizSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

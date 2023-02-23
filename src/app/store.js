@@ -1,5 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
+import thunk from "redux-thunk";
 import geoQuizSlice from "./features/geolocationQuizSlice";
 import userAuthReducer from "./features/AuthContext";
 import {
@@ -7,6 +9,7 @@ import {
   getCookie,
   removeCookie,
 } from "../utils/helperAuthentication";
+import resultSlice from "./features/resultSlice";
 
 const CookieStore = {
   setItem: async (key, val, callback) => {
@@ -37,8 +40,8 @@ const CookieStore = {
     return Promise.resolve(JSON.stringify(item));
   },
   removeItem: async (key, callback) => {
-    // console.log(key);
-    // console.log(callback);
+    console.log(key);
+    console.log(callback);
     removeCookie(key);
     localStorage.removeItem(key);
     if (callback) {
@@ -52,11 +55,13 @@ const persistAuthConfig = {
   key: "root",
   version: 1,
   storage: CookieStore,
+  stateReconiler: autoMergeLevel2,
 };
 
 const authXReducer = combineReducers({
   geoQuiz: geoQuizSlice,
   user: userAuthReducer,
+  results: resultSlice,
 });
 
 const persistedReducer = persistReducer(persistAuthConfig, authXReducer);
@@ -64,4 +69,5 @@ const persistedReducer = persistReducer(persistAuthConfig, authXReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: true,
+  middleware: [thunk],
 });
