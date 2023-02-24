@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
-import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import thunk from "redux-thunk";
 import geoQuizSlice from "./features/geolocationQuizSlice";
 import userAuthReducer from "./features/AuthContext";
@@ -55,7 +54,6 @@ const persistAuthConfig = {
   key: "root",
   version: 1,
   storage: CookieStore,
-  stateReconiler: autoMergeLevel2,
 };
 
 const authXReducer = combineReducers({

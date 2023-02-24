@@ -30,6 +30,12 @@ export const resultSlice = createSlice({
     pushResult: (state, action) => {
       state.result.push(action.payload);
     },
+    updateResult: (state, action) => {
+      const { trace, check } = action.payload;
+      // console.log(action.payload);
+      // console.log("updateresult", action.payload);
+      state.result.fill(check, trace, trace + 1);
+    },
     resetResult: (state, action) => {
       storage.removeItem("persist:root");
       storage.removeItem("persist_root");
@@ -48,7 +54,8 @@ export const resultSlice = createSlice({
   // },
 });
 
-export const { setUserId, pushResult, resetResult } = resultSlice.actions;
+export const { setUserId, pushResult, updateResult, resetResult } =
+  resultSlice.actions;
 
 export const selectResultResult = (state) => state.results.result;
 export const selectResultUserId = (state) => state.results.userId;

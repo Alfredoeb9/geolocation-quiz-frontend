@@ -1,11 +1,27 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GeoQuizTable from "../../components/GeoResultTable";
 import { resetAllAction } from "../../app/features/geolocationQuizSlice";
 import { resetResult } from "../../app/features/resultSlice";
+import { attempts_Number } from "../../helper/helper";
+import { earnPoints_Number } from "../../helper/helper";
+import { useEffect } from "react";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
+
+  const {
+    geoQuiz: { queue, answers },
+    results: { result, userId },
+  } = useSelector((state) => state);
+
+  useEffect(() => {
+    console.log(earnPoints);
+  });
+
+  const totalPoints = queue.length * 10;
+  const attempts = attempts_Number(result);
+  const earnPoints = earnPoints_Number(result, answers);
 
   function onRestart() {
     dispatch(resetAllAction());

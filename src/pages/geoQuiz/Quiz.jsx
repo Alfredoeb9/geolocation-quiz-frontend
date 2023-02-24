@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import {
-  getGeoQuiz,
   selectGeoQueue,
   selectGeoTrace,
 } from "../../app/features/geolocationQuizSlice";
 import { selectResultResult } from "../../app/features/resultSlice";
 import Questions from "../../components/Questions";
 import { MoveNextQuestion, MovePrevQuestion } from "../../hooks/useMoveAction";
+import { UpdateResult } from "../../hooks/setResult";
 
 import { PushAnswer } from "../../hooks/setResult";
 
@@ -18,32 +18,42 @@ function Quiz() {
   const trace = useSelector(selectGeoTrace);
   const queue = useSelector(selectGeoQueue);
   const results = useSelector(selectResultResult);
-  const [check, setChecked] = useState(null);
+  const [check, setChecked] = useState(undefined);
+  const [answer, setAnswer] = useState("");
+  const [oldTrace, setOldTrace] = useState(null);
+
+  // let newTrace;
   useEffect(() => {
-    // dispatch(getGeoQuiz());
-    console.log(trace, queue, results);
-  }, [trace, queue, results]);
+    dispatch(UpdateResult({ trace, check }));
+  }, [results, dispatch, check, trace]);
 
   /** next button event handler */
   function onNext() {
+    // programmatically reset value
     if (trace < queue.length) {
-      // update the trace value by one
       dispatch(MoveNextQuestion());
-      console.log(check);
-      dispatch(PushAnswer(check));
+      if (results.length <= trace) {
+        dispatch(PushAnswer(check));
+      }
+      // document.getElementById("answers-input").value = "";
+
+      setOldTrace(trace);
+      // newTrace = trace;
     }
+
+    setChecked(undefined);
   }
 
   /** Prev button event handler */
-  function onPrev() {
-    if (trace > 0) {
-      dispatch(MovePrevQuestion());
-    }
-  }
+  // function onPrev() {
+  //   if (trace > 0) {
+  //     dispatch(MovePrevQuestion());
+  //   }
+  // }
 
   function onChecked(check) {
     setChecked(check);
-    console.log(check);
+    // console.log(check);
   }
 
   // finish quiz after the last question
@@ -56,12 +66,19 @@ function Quiz() {
       <div className="quiz__container">
         <h1>Quiz Application</h1>
 
-        <Questions onChecked={onChecked} />
+        <Questions onChecked={onChecked} newTrace={oldTrace} />
+
+        {/* <div className={`check ${results[trace] == i ? "checked" : ""}`}></div> */}
 
         <div className="quiz__button">
-          <button className="btn prev" onClick={onPrev}>
-            Prev
-          </button>
+          {/* {trace > 0 ? (
+            <button className="btn prev" onClick={onPrev}>
+              Prev
+            </button>
+          ) : (
+            ""
+          )} */}
+
           <button className="btn next" onClick={onNext}>
             Next
           </button>

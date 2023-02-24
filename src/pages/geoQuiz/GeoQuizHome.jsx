@@ -7,7 +7,6 @@ function GeoQuizHome() {
     "http://localhost:4000/api/geolocation"
   );
 
-  console.log(data);
   return (
     <div className="quiz">
       <div className="quiz__container">
@@ -18,25 +17,7 @@ function GeoQuizHome() {
             <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
           </div>
           <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-          </div>
-          <div className="quiz__geolocation__tab">
-            <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
+            <Link to={`/geoquiz/${data[1]?._id}`}>{data[1]?.country}</Link>
           </div>
         </div>
       </div>

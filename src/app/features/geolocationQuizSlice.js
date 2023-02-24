@@ -18,7 +18,11 @@ export const geoQuizSlice = createSlice({
     getGeoQuiz: (state, action) => {
       // state.geoQuiz = action.payload;
       state.trace = state.trace;
-      state.answers = { ...state.answers };
+      state.answers = action.payload.questions.map((question) => {
+        return {
+          answer: question.answer,
+        };
+      });
       state.queue = action.payload.questions.map((question) => {
         return {
           id: question.id,
@@ -42,7 +46,7 @@ export const geoQuizSlice = createSlice({
       };
     },
     moveNextAction: (state) => {
-      console.log("running this right now");
+      // console.log("running this right now");
       // let randomNum = Math.floor(Math.random() * 9) + 1
       return {
         ...state,

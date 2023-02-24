@@ -35,7 +35,7 @@ function GeoQuiz() {
 
   const handleNumofGeoQuiz = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
 
     setNumofGeoQuiz(e.target.value);
   };
@@ -43,14 +43,14 @@ function GeoQuiz() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("working");
+    // console.log("working");
 
     // if (!user) {
     //   setError("You must be logged");
     //   return;
     // }
 
-    console.log(numofGeoQuiz);
+    // console.log(numofGeoQuiz);
     // console.log(duration);
     // console.log(currentWeight);
 
