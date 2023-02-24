@@ -5,8 +5,9 @@ import {
   selectGeoTrace,
 } from "../app/features/geolocationQuizSlice";
 import { selectResultResult } from "../app/features/resultSlice";
+import { UpdateResult } from "../hooks/setResult";
 
-function Questions({ onChecked, newTrace }) {
+function Questions({ onChecked }) {
   const dispatch = useDispatch();
   const queue = useSelector(selectGeoQueue);
   const trace = useSelector(selectGeoTrace);
@@ -16,13 +17,17 @@ function Questions({ onChecked, newTrace }) {
   const [initialQueue, setInitialQueue] = useState(undefined);
   const ref = useRef(null);
 
-  console.log("newTrace::", newTrace, "trace::", trace);
+  console.log("trace::", trace);
 
   useEffect(() => {
+    // setChecked(checked);
     setInitialQueue(queue[trace]);
-    onChecked(answer);
-    setChecked(checked);
-  }, [answer, checked, onChecked, queue, trace]);
+  }, [queue, trace]);
+
+  // useEffect(() => {
+  //   dispatch(UpdateResult({ trace, check }));
+  // }, [check]);
+  // onChecked(answer);
 
   // ref.current.value = "";
 
@@ -33,7 +38,7 @@ function Questions({ onChecked, newTrace }) {
         ref={ref}
         id={"answers-input"}
         type={"text"}
-        onChange={(e) => setAnswer(e.target.value)}
+        onChange={(e) => onChecked(e.target.value)}
         // value={`${trace !== newTrace ? results[trace] : answer}`}
       />
     </div>

@@ -25,7 +25,7 @@ function Quiz() {
   // let newTrace;
   useEffect(() => {
     dispatch(UpdateResult({ trace, check }));
-  }, [results, dispatch, check, trace]);
+  }, [check]);
 
   /** next button event handler */
   function onNext() {
@@ -66,7 +66,7 @@ function Quiz() {
       <div className="quiz__container">
         <h1>Quiz Application</h1>
 
-        <Questions onChecked={onChecked} newTrace={oldTrace} />
+        <Questions onChecked={onChecked} />
 
         {/* <div className={`check ${results[trace] == i ? "checked" : ""}`}></div> */}
 
