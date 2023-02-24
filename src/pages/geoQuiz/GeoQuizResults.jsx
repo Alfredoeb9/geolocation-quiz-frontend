@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import GeoQuizTable from "../../components/GeoResultTable";
@@ -5,7 +6,7 @@ import { resetAllAction } from "../../app/features/geolocationQuizSlice";
 import { resetResult } from "../../app/features/resultSlice";
 import { attempts_Number } from "../../helper/helper";
 import { earnPoints_Number } from "../../helper/helper";
-import { useEffect } from "react";
+import { flagResult } from "../../helper/helper";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function GeoQuizResults() {
 
   const totalPoints = queue.length * 10;
   const attempts = attempts_Number(result);
-  const earnPoints = earnPoints_Number(result, answers);
+  const earnPoints = earnPoints_Number(result, answers, 10);
+  const flag = flagResult(totalPoints, earnPoints);
 
   function onRestart() {
     dispatch(resetAllAction());
@@ -39,28 +41,28 @@ function GeoQuizResults() {
         </div>
         <div>
           <span>Total Quiz Points : </span>
-          {/* <span className="bold">{totalPoints || 0}</span> */}
+          <span className="bold">{totalPoints || 0}</span>
         </div>
         <div>
           <span>Total Questions : </span>
-          {/* <span className="bold">{queue.length || 0}</span> */}
+          <span className="bold">{queue.length || 0}</span>
         </div>
         <div>
           <span>Total Attempts : </span>
-          {/* <span className="bold">{attempts || 0}</span> */}
+          <span className="bold">{attempts || 0}</span>
         </div>
         <div>
           <span>Total Earn Points : </span>
-          {/* <span className="bold">{earnPoints || 0}</span> */}
+          <span className="bold">{earnPoints || 0}</span>
         </div>
         <div>
           <span>Quiz Result</span>
-          {/* <span
+          <span
             style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }}
             className="bold"
           >
             {flag ? "Passed" : "Failed"}
-          </span> */}
+          </span>
         </div>
       </div>
 
