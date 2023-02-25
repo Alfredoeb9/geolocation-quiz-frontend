@@ -7,7 +7,7 @@ import { Outlet, useNavigate, useLocation, Navigate } from "react-router-dom";
 
 function PrivateRoutes() {
   const location = useLocation();
-  //   const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -24,23 +24,22 @@ function PrivateRoutes() {
 
   console.log(width);
 
-  const isMobile = width <= 768;
-  return <Outlet />;
+  const isMobile = width <= 400;
 
-  //   return user ? (
-  //     <Outlet />
-  //   ) : isMobile ? (
-  //     navigate("/welcome", { replace: true })
-  //   ) : (
-  //     // navigate("/welcome", { replace: true })
-  //     <Navigate
-  //       to="/login"
-  //       state={{
-  //         from: location,
-  //       }}
-  //       replace={true}
-  //     />
-  //   );
+  return user ? (
+    <Outlet />
+  ) : isMobile ? (
+    navigate("/welcome", { replace: true })
+  ) : (
+    // navigate("/welcome", { replace: true })
+    <Navigate
+      to="/login"
+      state={{
+        from: location,
+      }}
+      replace={true}
+    />
+  );
 }
 
 export default PrivateRoutes;

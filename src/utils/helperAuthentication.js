@@ -43,19 +43,14 @@ export function getCookie(cookieName) {
   return cookie[cookieName];
 }
 
-// export function handleRedirect(user, path) {
-//   setTimeout(() => {
-//     if (!user)
-//       return window.location.replace(
-//         "https://musical-mousse-92b309.netlify.app/login"
-//       );
-//     if (path === "profile") {
-//       return <Navigate to={"/profile"} />;
-//     }
-//     if (user) {
-//       return window.location.replace(
-//         "https://musical-mousse-92b309.netlify.app/"
-//       );
-//     }
-//   }, 200);
-// }
+export function handleRedirect(user, path) {
+  setTimeout(() => {
+    if (!user) return window.location.replace("http://localhost:3000/login");
+    if (path === "profile") {
+      return <Navigate to={"/profile"} />;
+    }
+    if (user) {
+      return window.location.replace("http://localhost:3000/");
+    }
+  }, 200);
+}

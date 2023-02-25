@@ -6,16 +6,16 @@ import Avatar from "@mui/material/Avatar";
 import { deepOrange } from "@mui/material/colors";
 import Select from "@mui/material/Select";
 import { Menu } from "@mui/material";
-// import { useLogout } from "../hooks/useLogout";
+import { useLogout } from "../hooks/useLogout";
 import { selectUserAuth } from "../app/features/AuthContext";
 
 const Navbar = () => {
   const user = useSelector(selectUserAuth);
-  // const { logout2 } = useLogout();
+  const { logout2 } = useLogout();
 
   const handleClick = () => {
     console.log("logout controller clicked");
-    // logout2();
+    logout2();
   };
 
   return (

@@ -13,7 +13,7 @@ function GeoQuizResults() {
   const dispatch = useDispatch();
 
   const {
-    geoQuiz: { queue, answers },
+    geoQuiz: { geoQuiz, queue, answers },
     results: { result, userId },
   } = useSelector((state) => state);
 
@@ -25,10 +25,12 @@ function GeoQuizResults() {
   const attempts = attempts_Number(result);
   const earnPoints = earnPoints_Number(result, answers, 10);
   const flag = flagResult(totalPoints, earnPoints);
+  const id = geoQuiz?._id;
 
   async function postResults() {
     const resultData = {
       result,
+      quizId: id,
       username: userId,
       attempts,
       points: earnPoints,
@@ -36,7 +38,6 @@ function GeoQuizResults() {
     };
     try {
       // if (result !== [] && !userId) throw new Error("Couldn't get Result");
-      // console.log("data posted", resultData);
       await postResultData(
         `http://localhost:4000/api/result`,
         resultData,

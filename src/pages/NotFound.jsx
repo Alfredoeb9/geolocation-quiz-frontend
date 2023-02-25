@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 function NotFound() {
-  window.document.title = "Workybooks — Not Found";
+  window.document.title = "GeoLocation — Not Found";
 
   return (
     <div className="flex h-screen justify-center items-center">

@@ -1,38 +1,50 @@
-// import { createContext, useReducer } from 'react';
-
-// export const AuthContext = createContext();
-
-// export const authReducer = (state, action) => {
-
-// }
-
-// export const AuthContextProvider = ({ children }) => {
-//     const [state, dispatch] = useReducer(authReducer, {
-//         user: null
-//     });
-
-// }
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import authAPI from "../api/authApi";
 
 const initialState = {
   user: null,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
 };
 
-// const ParseUser = () => {
-//   const dispatch = useDispatch();
+// register user
+// eslint-disable-next-line no-shadow
+export const register = createAsyncThunk(
+  "auth/register",
+  async (user, thunkAPI) => {
+    try {
+      const message = await authAPI.register(user);
+      return message;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
-//   useEffect(() => {
-//     const user = JSON.parse(localStorage.getItem("user"));
-
-//     if (user) {
-//       dispatch(login(user));
-//     }
-//   }, []);
-// };
-
-// ParseUser();
+export const verifyEmail = createAsyncThunk(
+  "auth/verifyEmail",
+  async (emailVerificationId, thunkAPI) => {
+    try {
+      return await authAPI.verifyEmail(emailVerificationId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const userAuthSlice = createSlice({
   name: "user",
@@ -40,9 +52,9 @@ export const userAuthSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    login: (state, action) => {
-      state.user = action.payload;
-    },
+    // login: (state, action) => {
+    //   state.user = action.payload;
+    // },
 
     logout: (state) => {
       state.user = null;
@@ -54,6 +66,54 @@ export const userAuthSlice = createSlice({
       //   (workout) => workout._id !== action.payload._id
       // );
       state.user = action.payload;
+    },
+    extraReducers: (builder) => {
+      builder
+        // register cases
+        .addCase(register.pending, (state, action) => {
+          state.isLoading = true;
+        })
+        .addCase(register.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isSuccess = true;
+        })
+        .addCase(register.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+          state.user = null;
+        })
+        // verify email cases
+        .addCase(verifyEmail.pending, (state, action) => {
+          state.isLoading = true;
+        })
+        .addCase(verifyEmail.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isSuccess = true;
+          state.user = action.payload;
+        })
+        .addCase(verifyEmail.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+          state.user = null;
+        })
+        // login cases
+        .addCase(login.pending, (state, action) => {
+          state.isLoading = true;
+        })
+        .addCase(login.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isSuccess = true;
+          state.user = action.payload;
+        })
+        .addCase(login.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+          state.user = null;
+        });
+      // forgot password cases
     },
   },
 });

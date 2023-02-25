@@ -18,6 +18,9 @@ import GeoQuiz from "./pages/geoQuiz/GeoQuiz";
 import GeoQuizResults from "./pages/geoQuiz/GeoQuizResults";
 import Quiz from "./pages/geoQuiz/Quiz";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/login/Login";
+import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
+import SignUp from "./pages/signup/SignUp";
 
 import "./App.css";
 
@@ -25,7 +28,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route element={<PrivateRoutes />}>
-        <Route index element={<Home />} />
         <Route path="/geoquiz/" element={<GeoQuizHome />} />
         <Route path="/geoquiz/:id" element={<GeoQuiz />} />
         <Route path="/geoquiz/:id/quiz" element={<Quiz />} />
@@ -33,6 +35,10 @@ const router = createBrowserRouter(
 
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
+      <Route index element={<Home />} />
+      <Route path="/verify-email/:next/:id" element={<VerifyEmail />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

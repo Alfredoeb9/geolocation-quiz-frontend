@@ -6,11 +6,8 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import usePostFetch from "../../hooks/usePostFetch";
-import Switch from "@mui/material/Switch";
+import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
-import useFetch from "../../hooks/useFetch";
 
 function GeoQuiz() {
   const dispatch = useDispatch();
