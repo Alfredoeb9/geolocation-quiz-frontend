@@ -21,6 +21,8 @@ function GeoQuizResults() {
   //   console.log(earnPoints);
   // });
 
+  let cookieUser = localStorage.getItem("user");
+
   const totalPoints = queue.length * 10;
   const attempts = attempts_Number(result);
   const earnPoints = earnPoints_Number(result, answers, 10);
@@ -31,7 +33,7 @@ function GeoQuizResults() {
     const resultData = {
       result,
       quizId: id,
-      username: userId,
+      username: JSON.parse(cookieUser).updatedUser.username,
       attempts,
       points: earnPoints,
       achived: flag ? "Passed" : "Failed",

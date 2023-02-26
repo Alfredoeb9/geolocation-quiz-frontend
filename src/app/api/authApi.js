@@ -25,7 +25,7 @@ const register = async (userData) => {
   // return response.data;
 };
 
-const resendVerifyEmail = async (email, nextapp) => {
+const resendVerifyEmail = async (email) => {
   const response = await axios.post(
     `${API_URL}/auth/resend-verification-email`,
     { email: email },
@@ -50,9 +50,21 @@ const verifyEmail = async (id) => {
 };
 // login user
 const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/auth/login`, userData);
+  const response = await fetch(`http://localhost:4000/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  });
 
-  return response.data;
+  const json = await response.json();
+
+  console.log(json);
+
+  if (!response.ok) {
+    console.log(json.error);
+    //   setError(json.error);
+  }
+  return json;
 };
 
 const authAPI = {

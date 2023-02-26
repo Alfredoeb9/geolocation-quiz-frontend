@@ -29,6 +29,22 @@ export const register = createAsyncThunk(
   }
 );
 
+// login user
+// eslint-disable-next-line no-shadow
+// export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
+//   try {
+//     const message = await authAPI.login(user);
+//     console.log("message", message);
+//     return message;
+//   } catch (error) {
+//     const message =
+//       (error.response && error.response.data && error.response.data.message) ||
+//       error.message ||
+//       error.toString();
+//     return thunkAPI.rejectWithValue(message);
+//   }
+// });
+
 export const verifyEmail = createAsyncThunk(
   "auth/verifyEmail",
   async (emailVerificationId, thunkAPI) => {
@@ -46,15 +62,30 @@ export const verifyEmail = createAsyncThunk(
   }
 );
 
+export const resendVerificationEmail = createAsyncThunk(
+  "auth/resendVerifyEmail",
+  async (emailVerificationId, thunkAPI) => {
+    try {
+      return await authAPI.resendVerifyEmail(emailVerificationId);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const userAuthSlice = createSlice({
   name: "user",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    // login: (state, action) => {
-    //   state.user = action.payload;
-    // },
+    login: (state, action) => {
+      state.user = action.payload;
+    },
 
     logout: (state) => {
       state.user = null;
@@ -97,22 +128,25 @@ export const userAuthSlice = createSlice({
           state.isError = true;
           state.message = action.payload;
           state.user = null;
-        })
-        // login cases
-        .addCase(login.pending, (state, action) => {
-          state.isLoading = true;
-        })
-        .addCase(login.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.isSuccess = true;
-          state.user = action.payload;
-        })
-        .addCase(login.rejected, (state, action) => {
-          state.isLoading = false;
-          state.isError = true;
-          state.message = action.payload;
-          state.user = null;
         });
+      // login cases
+      // .addCase(login.pending, (state, action) => {
+      //   console.log("pending");
+      //   state.isLoading = true;
+      // })
+      // .addCase(login.fulfilled, (state, action) => {
+      //   console.log("fullfilled", action.payload);
+      //   state.isLoading = false;
+      //   state.isSuccess = true;
+      //   state.user = action.payload;
+      // })
+      // .addCase(login.rejected, (state, action) => {
+      //   console.log("rejected");
+      //   state.isLoading = false;
+      //   state.isError = true;
+      //   state.message = action.payload;
+      //   state.user = null;
+      // });
       // forgot password cases
     },
   },

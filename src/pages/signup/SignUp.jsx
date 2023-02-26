@@ -44,10 +44,11 @@ function SignUp() {
     // await signup(username, firstName, lastName, email, password);
   };
 
-  const resendEmail = async () => {
+  const resendEmail = async (email) => {
     try {
       const resend = await authAPI.resendVerifyEmail(email);
       console.log(resend);
+      return resend;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message)
         console.log(error);

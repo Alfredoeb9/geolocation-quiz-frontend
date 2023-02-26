@@ -36,7 +36,7 @@ const router = createBrowserRouter(
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
       <Route index element={<Home />} />
-      <Route path="/verify-email/:next/:id" element={<VerifyEmail />} />
+      <Route path="/verify-email/:id" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="*" element={<NotFound />} />

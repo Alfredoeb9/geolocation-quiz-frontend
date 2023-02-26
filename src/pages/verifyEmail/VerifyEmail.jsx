@@ -11,6 +11,8 @@ import authAPI from "../../app/api/authApi";
 export default function VerifyEmail() {
   const { id } = useParams();
 
+  console.log(id);
+
   // const { Header } = Layout;
   const dispatch = useDispatch();
   const navigate = useNavigate();

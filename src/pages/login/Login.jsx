@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogin } from "../../hooks/useLogin";
-import { userAuthSlice, selectUserAuth } from "../../app/features/AuthContext";
+import {
+  userAuthSlice,
+  selectUserAuth,
+  login,
+} from "../../app/features/AuthContext";
 import { handleRedirect } from "../../utils/helperAuthentication";
 
 function Login() {
+  const dispatch = useDispatch();
   const user = useSelector(selectUserAuth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +23,13 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+
+    // dispatch(login(user));
 
     await login2(email, password);
   };
