@@ -12,7 +12,7 @@ const initialState = {
 // register user
 // eslint-disable-next-line no-shadow
 export const register = createAsyncThunk(
-  "auth/register",
+  "user/register",
   async (user, thunkAPI) => {
     try {
       const message = await authAPI.register(user);
@@ -45,25 +45,25 @@ export const register = createAsyncThunk(
 //   }
 // });
 
-export const verifyEmail = createAsyncThunk(
-  "auth/verifyEmail",
-  async (emailVerificationId, thunkAPI) => {
-    try {
-      return await authAPI.verifyEmail(emailVerificationId);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
+// export const verifyEmail = createAsyncThunk(
+//   "auth/verifyEmail",
+//   async (emailVerificationId, thunkAPI) => {
+//     try {
+//       return await authAPI.verifyEmail(emailVerificationId);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
 
 export const resendVerificationEmail = createAsyncThunk(
-  "auth/resendVerifyEmail",
+  "user/resendVerifyEmail",
   async (emailVerificationId, thunkAPI) => {
     try {
       return await authAPI.resendVerifyEmail(emailVerificationId);
@@ -85,10 +85,24 @@ export const userAuthSlice = createSlice({
     // Use the PayloadAction type to declare the contents of `action.payload`
     login: (state, action) => {
       state.user = action.payload;
+      state.isError = false;
+      state.isSuccess = true;
+      state.isLoading = false;
+      state.message = "USER_SIGNED_IN";
     },
 
     logout: (state) => {
       state.user = null;
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
+    },
+    verifyEmail: (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.message = "USER_AUTHORIZED";
+      // state.user = action.payload;
     },
     updateUser: (state, action) => {
       // console.log(state.workout);
@@ -113,22 +127,23 @@ export const userAuthSlice = createSlice({
           state.isError = true;
           state.message = action.payload;
           state.user = null;
-        })
-        // verify email cases
-        .addCase(verifyEmail.pending, (state, action) => {
-          state.isLoading = true;
-        })
-        .addCase(verifyEmail.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.isSuccess = true;
-          state.user = action.payload;
-        })
-        .addCase(verifyEmail.rejected, (state, action) => {
-          state.isLoading = false;
-          state.isError = true;
-          state.message = action.payload;
-          state.user = null;
         });
+      // verify email cases
+      // .addCase(verifyEmail.pending, (state, action) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(verifyEmail.fulfilled, (state, action) => {
+      //   console.log(state);
+      //   state.isLoading = false;
+      //   state.isSuccess = true;
+      //   state.user = action.payload;
+      // })
+      // .addCase(verifyEmail.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isError = true;
+      //   state.message = action.payload;
+      //   state.user = null;
+      // });
       // login cases
       // .addCase(login.pending, (state, action) => {
       //   console.log("pending");
@@ -152,7 +167,7 @@ export const userAuthSlice = createSlice({
   },
 });
 
-export const { login, logout, updateUser } = userAuthSlice.actions;
+export const { login, logout, verifyEmail, updateUser } = userAuthSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
