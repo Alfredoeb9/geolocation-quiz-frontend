@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { Layout, message, Typography } from 'antd';
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import authAPI from "../../app/api/authApi";
 import { verifyEmail } from "../../app/features/AuthContext";
 
@@ -14,7 +14,6 @@ export default function VerifyEmail() {
 
   // const { Header } = Layout;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   // const { isLoading, isError, isSuccess } = useSelector((state) => state.auth);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

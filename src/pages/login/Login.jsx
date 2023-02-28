@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogin } from "../../hooks/useLogin";
-import {
-  userAuthSlice,
-  selectUserAuth,
-  login,
-} from "../../app/features/AuthContext";
+import { selectUserAuth } from "../../app/features/AuthContext";
 import { handleRedirect } from "../../utils/helperAuthentication";
 
 function Login() {
-  const dispatch = useDispatch();
   const user = useSelector(selectUserAuth);
   const { isSuccess } = useSelector((state) => state.user);
   const [isVerified, setIsVerified] = useState(false);

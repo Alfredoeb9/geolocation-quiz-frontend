@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useSignup } from "../../hooks/useSignup";
 import { useResend } from "../../hooks/useResend";
 import { handleRedirect } from "../../utils/helperAuthentication";
-import {
-  userAuthSlice,
-  selectUserAuth,
-  register,
-} from "../../app/features/AuthContext";
-import authAPI from "../../app/api/authApi";
+import { selectUserAuth } from "../../app/features/AuthContext";
 
 function SignUp() {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -23,8 +17,6 @@ function SignUp() {
   const { resend, error2, isLoading2 } = useResend();
   const user = useSelector(selectUserAuth);
   const { message } = useSelector((state) => state.user);
-
-  console.log(message);
 
   useEffect(() => {
     if (user !== null) {
@@ -114,22 +106,27 @@ function SignUp() {
           {error && <div className="error">{error}</div>}
         </form>
       ) : (
-        <div hoverable className="">
-          <div className="">
-            <div style={{ fontSize: "4rem", color: "#666" }} />
-          </div>
-          <div className="">
+        <div className="reverify">
+          <div className="reverify__container">
             We have sent a verification email to{" "}
-            <span className="">{email}</span>. <br />
+            <span className="reverify__email">{email}</span>. <br />
             Click on the link in the email to verify your account.
           </div>
-          <button onClick={resendEmail}>resend</button>
+          <button
+            disabled={isLoading2}
+            className="reviery__resendBtn"
+            onClick={resendEmail}
+          >
+            resend
+          </button>
+
+          {error2 && <div className="error">{error2}</div>}
           {/* <div className="text-gray-600 py-8 text-sm">
             <a onClick={resendEmail}>Resend Email</a>
           </div> */}
         </div>
       )}
-      <div>
+      <div id="signIn__btn">
         <p>Already have an account?</p> <Link to={"/signup"}>Sign In</Link>
       </div>
     </>
