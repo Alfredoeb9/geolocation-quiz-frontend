@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignup } from "../../hooks/useSignup";
+import { useResend } from "../../hooks/useResend";
 import { handleRedirect } from "../../utils/helperAuthentication";
 import {
   userAuthSlice,
@@ -18,13 +20,21 @@ function SignUp() {
   const [username, setUsername] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const { signup, error, isLoading } = useSignup();
+  const { resend, error2, isLoading2 } = useResend();
   const user = useSelector(selectUserAuth);
+  const { message } = useSelector((state) => state.user);
+
+  console.log(message);
 
   useEffect(() => {
     if (user !== null) {
       handleRedirect(user);
     }
-  }, [user]);
+
+    if (message == "USER_REGISTERED") {
+      setIsVerified(true);
+    }
+  }, [message, user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,16 +49,17 @@ function SignUp() {
 
     // console.log(user);
 
-    dispatch(register(user));
+    // dispatch(register(user));
 
-    // await signup(username, firstName, lastName, email, password);
+    await signup(user);
   };
 
-  const resendEmail = async (email) => {
+  const resendEmail = async () => {
     try {
-      const resend = await authAPI.resendVerifyEmail(email);
-      console.log(resend);
-      return resend;
+      await resend(email);
+      // const resend = await authAPI.resendVerifyEmail(email);
+      // console.log(resend);
+      // return resend;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message)
         console.log(error);
@@ -103,20 +114,24 @@ function SignUp() {
           {error && <div className="error">{error}</div>}
         </form>
       ) : (
-        <div hoverable className="text-xl p-8 mt-20 text-center">
-          <div className="mx-auto">
+        <div hoverable className="">
+          <div className="">
             <div style={{ fontSize: "4rem", color: "#666" }} />
           </div>
-          <div className="text-gray-600 text-sm py-4">
+          <div className="">
             We have sent a verification email to{" "}
-            <span className="font-bold">test@email.com</span>. <br />
+            <span className="">{email}</span>. <br />
             Click on the link in the email to verify your account.
           </div>
-          <div className="text-gray-600 py-8 text-sm">
+          <button onClick={resendEmail}>resend</button>
+          {/* <div className="text-gray-600 py-8 text-sm">
             <a onClick={resendEmail}>Resend Email</a>
-          </div>
+          </div> */}
         </div>
       )}
+      <div>
+        <p>Already have an account?</p> <Link to={"/signup"}>Sign In</Link>
+      </div>
     </>
   );
 }
