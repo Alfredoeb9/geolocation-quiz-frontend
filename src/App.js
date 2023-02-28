@@ -11,6 +11,7 @@ import RootLayout from "./layouts/RootLayout";
 
 import PrivateRoutes from "./components/PrivateRoutes";
 import Home from "./pages/Home";
+import Welcome from "./pages/Welcome";
 import Profile from "./pages/Profile";
 import Featured from "./components/Featured";
 import GeoQuizHome from "./pages/geoQuiz/GeoQuizHome";
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
       <Route index element={<Home />} />
+      <Route path="/welcome" element={<Welcome />} />
       <Route path="/verify-email/:id" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
