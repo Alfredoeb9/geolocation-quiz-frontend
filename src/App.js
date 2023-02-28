@@ -28,6 +28,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route element={<PrivateRoutes />}>
+        <Route path="/profile" element={<Profile />} />
         <Route path="/geoquiz/" element={<GeoQuizHome />} />
         <Route path="/geoquiz/:id" element={<GeoQuiz />} />
         <Route path="/geoquiz/:id/quiz" element={<Quiz />} />
