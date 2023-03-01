@@ -1,8 +1,11 @@
 .app {
   width: auto;
+  height: 100%;
 }
 
 .app__pages {
+  height: 100%;
   max-width: 1440px;
-  padding: 0px 20px;
+  margin: 0 auto;
+  /* padding: 0px 20px; */
 }

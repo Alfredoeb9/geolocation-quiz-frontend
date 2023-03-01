@@ -51,6 +51,12 @@ const Navbar = () => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
+                    <Link to="/results">
+                      <Avatar sx={{ bgcolor: deepOrange[500] }}></Avatar>
+                      <span className="">My Results</span>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
                     <span onClick={handleClick}>Log out</span>
                   </MenuItem>
                 </Select>

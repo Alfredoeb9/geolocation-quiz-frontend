@@ -127,7 +127,7 @@ function SignUp() {
         </div>
       )}
       <div id="signIn__btn">
-        <p>Already have an account?</p> <Link to={"/signup"}>Sign In</Link>
+        <p>Already have an account?</p> <Link to={"/login"}>Sign In</Link>
       </div>
     </>
   );

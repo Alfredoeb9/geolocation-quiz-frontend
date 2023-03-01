@@ -22,6 +22,8 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/login/Login";
 import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
 import SignUp from "./pages/signup/SignUp";
+import Results from "./pages/myResults/Results";
+import MyResults from "./pages/myResults/MyResults";
 
 import "./App.css";
 
@@ -30,6 +32,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route element={<PrivateRoutes />}>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/results/:id" element={<MyResults />} />
         <Route path="/geoquiz/" element={<GeoQuizHome />} />
         <Route path="/geoquiz/:id" element={<GeoQuiz />} />
         <Route path="/geoquiz/:id/quiz" element={<Quiz />} />

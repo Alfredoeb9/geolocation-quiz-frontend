@@ -33,7 +33,7 @@ function GeoQuizResults() {
     const resultData = {
       result,
       quizId: id,
-      username: JSON.parse(cookieUser).updatedUser.username,
+      username: JSON.parse(cookieUser).username,
       attempts,
       points: earnPoints,
       achived: flag ? "Passed" : "Failed",
