@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getResultData } from "../../hooks/usePostResult";
 
@@ -21,7 +21,7 @@ function MyResults() {
     fetchData();
   }, [id, username]);
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <div>
@@ -35,7 +35,12 @@ function MyResults() {
           </tr>
         </thead>
         <tbody>
-          {!data ?? <div>No Data Found </div>}
+          {data.length == 0 && (
+            <div>
+              No Results found for category!{" "}
+              <Link to={`/geoquiz/${id}`}>Take a test?</Link>{" "}
+            </div>
+          )}
           {data.map((v, i) => (
             <tr className="table-body" key={i}>
               <td>{v?.username || ""}</td>

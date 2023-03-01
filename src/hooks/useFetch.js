@@ -8,7 +8,7 @@ const useFetch = (url, numofGeoQuiz) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // setLoading(true);
+      setLoading(true);
       try {
         const response = await axios.get(url, numofGeoQuiz);
         setData(response.data);
@@ -16,7 +16,7 @@ const useFetch = (url, numofGeoQuiz) => {
         setError(error);
       }
 
-      // setLoading(false);
+      setLoading(false);
     };
 
     fetchData();

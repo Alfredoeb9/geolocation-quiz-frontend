@@ -52,7 +52,6 @@ const Navbar = () => {
                   </MenuItem>
                   <MenuItem>
                     <Link to="/results">
-                      <Avatar sx={{ bgcolor: deepOrange[500] }}></Avatar>
                       <span className="">My Results</span>
                     </Link>
                   </MenuItem>

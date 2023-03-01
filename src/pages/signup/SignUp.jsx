@@ -5,6 +5,7 @@ import { useSignup } from "../../hooks/useSignup";
 import { useResend } from "../../hooks/useResend";
 import { handleRedirect } from "../../utils/helperAuthentication";
 import { selectUserAuth } from "../../app/features/AuthContext";
+import CircularIndeterminate from "../../components/spinner/Spinner";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [isVerified, setIsVerified] = useState(false);
+  const [spinnerLoading, setSpinnerLoading] = useState(false);
   const { signup, error, isLoading } = useSignup();
   const { resend, error2, isLoading2 } = useResend();
   const user = useSelector(selectUserAuth);
@@ -24,6 +26,7 @@ function SignUp() {
     }
 
     if (message == "USER_REGISTERED") {
+      setSpinnerLoading(true);
       setIsVerified(true);
     }
   }, [message, user]);
@@ -61,75 +64,78 @@ function SignUp() {
     }
   };
   return (
-    <>
-      {!isVerified ? (
-        <form className="signup" onSubmit={handleSubmit}>
-          <h3>Sign up</h3>
-
-          <label>Email:</label>
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-
-          <label>Password:</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-
-          <label>Username:</label>
-          <input
-            type="name"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-
-          <label>First Name:</label>
-          <input
-            type="name"
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-          />
-
-          <label>Last Name:</label>
-          <input
-            type="name"
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-          />
-
-          <button disabled={isLoading}>Sign Up</button>
-
-          {error && <div className="error">{error}</div>}
-        </form>
+    <div>
+      {isLoading || spinnerLoading ? (
+        <CircularIndeterminate />
       ) : (
-        <div className="reverify">
-          <div className="reverify__container">
-            We have sent a verification email to{" "}
-            <span className="reverify__email">{email}</span>. <br />
-            Click on the link in the email to verify your account.
-          </div>
-          <button
-            disabled={isLoading2}
-            className="reviery__resendBtn"
-            onClick={resendEmail}
-          >
-            resend
-          </button>
+        <>
+          {!isVerified ? (
+            <form className="signup" onSubmit={handleSubmit}>
+              <h3>Sign up</h3>
 
-          {error2 && <div className="error">{error2}</div>}
-          {/* <div className="text-gray-600 py-8 text-sm">
+              <label>Email:</label>
+              <input
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+
+              <label>Password:</label>
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+
+              <label>Username:</label>
+              <input
+                type="name"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+              />
+
+              <label>First Name:</label>
+              <input
+                type="name"
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+              />
+
+              <label>Last Name:</label>
+              <input
+                type="name"
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+              />
+
+              <button disabled={isLoading}>Sign Up</button>
+
+              {error && <div className="error">{error}</div>}
+            </form>
+          ) : (
+            <div className="reverify">
+              <div className="reverify__container">
+                We have sent a verification email to{" "}
+                <span className="reverify__email">{email}</span>. <br />
+                Click on the link in the email to verify your account.
+              </div>
+              <button
+                disabled={isLoading2}
+                className="reviery__resendBtn"
+                onClick={resendEmail}
+              >
+                Resend Email
+              </button>
+
+              {error2 && <div className="error">{error2}</div>}
+              {/* <div className="text-gray-600 py-8 text-sm">
             <a onClick={resendEmail}>Resend Email</a>
           </div> */}
-        </div>
+            </div>
+          )}
+        </>
       )}
-      <div id="signIn__btn">
-        <p>Already have an account?</p> <Link to={"/login"}>Sign In</Link>
-      </div>
-    </>
+    </div>
   );
 }
 
