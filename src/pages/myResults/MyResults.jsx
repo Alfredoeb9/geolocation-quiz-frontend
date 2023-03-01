@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Navigate,
-  useParams,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getResultData } from "../../hooks/usePostResult";
 

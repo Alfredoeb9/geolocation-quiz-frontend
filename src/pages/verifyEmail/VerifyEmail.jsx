@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import { Layout, message, Typography } from 'antd';
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import authAPI from "../../app/api/authApi";
 import { verifyEmail } from "../../app/features/AuthContext";
-
-// import logo from '../../assets/images/logo.png';
-// import Spinner from '../../components/spinner/Spinner';
-// import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 
 export default function VerifyEmail() {
   const { id } = useParams();
@@ -21,7 +16,6 @@ export default function VerifyEmail() {
   const [isLoading, setIsLoading] = useState(false);
   const fetchVerify = async () => {
     try {
-      // dispatch(verifyEmail(id));
       const verify = await authAPI.verifyEmail(id);
       dispatch(verifyEmail(verify));
       setIsSuccess(true);

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export async function getResultData(url, username) {
-  console.log(username);
   const data = await axios.post(url, username);
   return data.data;
 }

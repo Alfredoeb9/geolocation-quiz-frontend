@@ -1,11 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react";
-import {
-  Navigate,
-  useParams,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 
