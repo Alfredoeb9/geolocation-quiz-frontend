@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogin } from "../../hooks/useLogin";
 import { useResend } from "../../hooks/useResend";
@@ -8,6 +8,7 @@ import { handleRedirect } from "../../utils/helperAuthentication";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 
 function Login() {
+  const navigate = useNavigate();
   const user = useSelector(selectUserAuth);
   const { isSuccess, message } = useSelector((state) => state.user);
   const [isVerified, setIsVerified] = useState(false);
@@ -25,13 +26,14 @@ function Login() {
     }
     if (user !== null) {
       setSpinnerLoading(true);
-      handleRedirect(user, "/");
+      navigate("/", { replace: true });
+      // handleRedirect(user, "/");
     }
 
     // if (isSuccess) {
 
     // }
-  }, [isSuccess, user, message]);
+  }, [isSuccess, user, message, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

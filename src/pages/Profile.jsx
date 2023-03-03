@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useSignup } from "../hooks/useSignup";
 import { useUpdateProfile } from "../hooks/useProfileUpdate";
@@ -7,6 +8,7 @@ import { handleRedirect } from "../utils/helperAuthentication";
 import { selectUserAuth } from "../app/features/AuthContext";
 
 function Profile() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -17,10 +19,10 @@ function Profile() {
   const { logout2 } = useLogout();
 
   useEffect(() => {
-    if (user !== null) {
-      handleRedirect(user, "profile");
+    if (user == null) {
+      navigate("/login", { replace: true });
     }
-  }, [user]);
+  }, [navigate, user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
