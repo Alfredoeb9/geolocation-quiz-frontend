@@ -1,7 +1,16 @@
-import "./Home.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { resetAllAction } from "../app/features/geolocationQuizSlice";
+import { resetResult } from "../app/features/resultSlice";
+import "./Home.css";
 
 function Home() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetAllAction());
+    dispatch(resetResult());
+  });
   return (
     <div className="home">
       <div id="box"></div>

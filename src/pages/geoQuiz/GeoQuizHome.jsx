@@ -12,6 +12,10 @@ function GeoQuizHome() {
   //   <CircularIndeterminate />;
   // }
 
+  data.map((data) => {
+    console.log(data);
+  });
+
   return (
     <div className="quiz">
       <div className="quiz__container">
@@ -22,12 +26,11 @@ function GeoQuizHome() {
             <h1>Learning</h1>
 
             <div className="quiz__geolocation__container">
-              <div className="quiz__geolocation__tab">
-                <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>
-              </div>
-              <div className="quiz__geolocation__tab">
-                <Link to={`/geoquiz/${data[1]?._id}`}>{data[1]?.country}</Link>
-              </div>
+              {data.map((data, index) => (
+                <div key={index} className="quiz__geolocation__tab">
+                  <Link to={`/geoquiz/${data._id}`}>{data.country}</Link>
+                </div>
+              ))}
             </div>
           </>
         )}

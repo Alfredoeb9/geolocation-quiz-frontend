@@ -58,7 +58,7 @@ function Quiz() {
 
   // finish quiz after the last question
   if (results?.length >= queue?.length) {
-    return <Navigate to={"/geoquiz/results"} replace={true}></Navigate>;
+    return <Navigate to={"/geoquiz/results"} replace={true} />;
   }
 
   return (

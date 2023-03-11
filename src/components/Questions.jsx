@@ -22,6 +22,7 @@ function Questions({ onChecked }) {
   useEffect(() => {
     // setChecked(checked);
     setInitialQueue(queue[trace]);
+    document.getElementById("answers-input").value = "";
   }, [queue, trace]);
 
   // useEffect(() => {
@@ -39,7 +40,7 @@ function Questions({ onChecked }) {
         id={"answers-input"}
         type={"text"}
         onChange={(e) => onChecked(e.target.value)}
-        // value={`${trace !== newTrace ? results[trace] : answer}`}
+        // value={""}
       />
     </div>
   );

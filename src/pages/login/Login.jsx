@@ -86,7 +86,7 @@ function Login() {
               value={password}
             />
 
-            <button onClick={handleSubmit} disabled={isLoading || !isVerified}>
+            <button onClick={handleSubmit} disabled={isLoading}>
               Log in
             </button>
             {error && <div className="error">{error}</div>}

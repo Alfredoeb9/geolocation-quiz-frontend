@@ -101,7 +101,7 @@ function GeoQuizResults() {
 
       <div className="container">
         {/* result table */}
-        <GeoQuizTable></GeoQuizTable>
+        <GeoQuizTable />
       </div>
     </div>
   );
