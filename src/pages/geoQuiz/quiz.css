@@ -1,0 +1,23 @@
+.quiz__container {
+  max-width: 620px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.quiz__container h1 {
+  padding-bottom: 1rem;
+}
+
+.quiz__container button {
+  font-size: 1.3rem;
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px 25px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -33,7 +33,7 @@ function Questions({ onChecked }) {
   // ref.current.value = "";
 
   return (
-    <div className="questions">
+    <div className="quiz__questions">
       <h2>{initialQueue?.question}</h2>
       <input
         ref={ref}

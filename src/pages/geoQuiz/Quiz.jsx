@@ -9,8 +9,8 @@ import { selectResultResult } from "../../app/features/resultSlice";
 import Questions from "../../components/Questions";
 import { MoveNextQuestion, MovePrevQuestion } from "../../hooks/useMoveAction";
 import { UpdateResult } from "../../hooks/setResult";
-
 import { PushAnswer } from "../../hooks/setResult";
+import "./quiz.css";
 
 function Quiz() {
   const dispatch = useDispatch();

@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import "./geoQuiz.css";
 
 function GeoQuiz() {
   const dispatch = useDispatch();
@@ -99,12 +100,12 @@ function GeoQuiz() {
   };
 
   return (
-    <div className="geoquiz">
-      <div className="geoquiz__container">
+    <div className="geoQuiz">
+      <div className="geoQuiz__container">
         {isLoading ? (
           <CircularIndeterminate />
         ) : (
-          <form className="create" onSubmit={handleSubmit}>
+          <form className="geoQuiz__create" onSubmit={handleSubmit}>
             <h3>Geolocation ({data.country}) Quiz Set-up</h3>
 
             <div>

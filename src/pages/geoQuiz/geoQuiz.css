@@ -1,0 +1,31 @@
+.geoQuiz {
+  width: 100%;
+  height: 100%;
+}
+
+.geoQuiz__container {
+  max-width: 620px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.geoQuiz__create h3 {
+  font-size: 2rem;
+  padding-bottom: 0.4rem;
+}
+
+.geoQuiz__create label {
+  font-size: 1.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.geoQuiz__create select {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.geoQuiz__create button {
+  font-size: 1.3rem;
+}

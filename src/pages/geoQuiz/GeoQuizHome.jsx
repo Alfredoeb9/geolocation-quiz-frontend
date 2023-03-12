@@ -24,6 +24,7 @@ function GeoQuizHome() {
         ) : (
           <>
             <h1>Learning</h1>
+            <p>Pick one of the Geo topics from down below to take a quiz!</p>
 
             <div className="quiz__geolocation__container">
               {data.map((data, index) => (
