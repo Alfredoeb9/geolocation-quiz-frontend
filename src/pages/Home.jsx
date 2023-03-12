@@ -23,13 +23,13 @@ function Home() {
           <Link to={"/geoquiz"}>Challenges</Link>
         </div>
         <div className="products__challenges">
-          <Link to={"/geoquiz"}>Challenges</Link>
+          <Link to={"/geoquiz"}>Facts and Stats</Link>
         </div>
         <div className="products__challenges">
-          <Link to={"/geoquiz"}>Challenges</Link>
+          <Link to={"/geoquiz"}>Map</Link>
         </div>
         <div className="products__challenges">
-          <Link to={"/geoquiz"}>Challenges</Link>
+          <Link to={"/"}>Coming Up</Link>
         </div>
       </div>
     </div>

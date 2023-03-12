@@ -64,12 +64,12 @@ function Login() {
   };
 
   return (
-    <>
+    <div className="login">
       {isLoading || spinnerLoading ? (
         <CircularIndeterminate />
       ) : (
-        <>
-          <form className="login" onSubmit={handleSubmit}>
+        <div className="login__container">
+          <form className="login__form" onSubmit={handleSubmit}>
             <h3>Log In</h3>
 
             <label>Email:</label>
@@ -93,26 +93,22 @@ function Login() {
           </form>
 
           {verifyEmail && (
-            <div className="">
-              <span className="">Your email is not verified.</span>
+            <div className="login__verify">
+              <span className="login__verify__span">
+                Your email is not verified.
+              </span>
               Please click on the Verify Email link in the email registered
               with.
               <br />
               {/* <button onClick={resendEmail}>RESEND EMAIL</button> */}
             </div>
           )}
-        </>
-      )}
-      {/* {!message ? ( */}
-
-      {/* ) : (
-        <div id="signIn__btn">
-          <p>Please verify account!</p>
-          <br />
-          <p>Don't have an account?</p> <Link to={"/signup"}>Sign Up</Link>
         </div>
-      )} */}
-    </>
+      )}
+      <p>
+        Don't have an account <Link to={"/login"}>Sign up</Link>
+      </p>
+    </div>
   );
 }
 
