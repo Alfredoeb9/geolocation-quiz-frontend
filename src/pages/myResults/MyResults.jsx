@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getResultData } from "../../hooks/usePostResult";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import "./results.css";
 
 function MyResults() {
   const { id } = useParams();
@@ -21,20 +29,18 @@ function MyResults() {
     fetchData();
   }, [id, username]);
 
-  console.log(data);
-
   return (
-    <div>
-      <table>
-        <thead className="table-header">
-          <tr className="table-row">
-            <td>Name</td>
-            <td>Attemps</td>
-            <td>Earn Points</td>
-            <td>Result</td>
-          </tr>
-        </thead>
-        <tbody>
+    <TableContainer className="results" component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead className="table-header">
+          <TableRow className="table-row">
+            <TableCell>Name</TableCell>
+            <TableCell>Attemps</TableCell>
+            <TableCell>Earn Points</TableCell>
+            <TableCell>Result</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {data.length == 0 && (
             <div>
               No Results found for category!{" "}
@@ -42,16 +48,16 @@ function MyResults() {
             </div>
           )}
           {data.map((v, i) => (
-            <tr className="table-body" key={i}>
-              <td>{v?.username || ""}</td>
-              <td>{v?.attempts || 0}</td>
-              <td>{v?.points || 0}</td>
-              <td>{v?.achived || ""}</td>
-            </tr>
+            <TableRow className="table-body" key={i}>
+              <TableCell>{v?.username || ""}</TableCell>
+              <TableCell>{v?.attempts || 0}</TableCell>
+              <TableCell>{v?.points || 0}</TableCell>
+              <TableCell>{v?.achived || ""}</TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 
