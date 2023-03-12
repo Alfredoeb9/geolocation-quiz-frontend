@@ -24,6 +24,7 @@ import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
 import SignUp from "./pages/signup/SignUp";
 import Results from "./pages/myResults/Results";
 import MyResults from "./pages/myResults/MyResults";
+import GeoMaps from "./pages/geoMaps/GeoMaps";
 
 import "./App.css";
 
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
       <Route path="/verify-email/:id" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/maps" element={<GeoMaps />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

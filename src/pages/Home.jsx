@@ -26,7 +26,7 @@ function Home() {
           <Link to={"/geoquiz"}>Facts and Stats</Link>
         </div>
         <div className="products__challenges">
-          <Link to={"/geoquiz"}>Map</Link>
+          <Link to={"/maps"}>Map</Link>
         </div>
         <div className="products__challenges">
           <Link to={"/"}>Coming Up</Link>
