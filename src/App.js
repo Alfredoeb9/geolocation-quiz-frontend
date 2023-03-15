@@ -25,6 +25,8 @@ import SignUp from "./pages/signup/SignUp";
 import Results from "./pages/myResults/Results";
 import MyResults from "./pages/myResults/MyResults";
 import GeoMaps from "./pages/geoMaps/GeoMaps";
+import FactsAndStats from "./pages/factsAndStats/FactsAndStats";
+import USFact from "./pages/factsAndStats/USFact";
 
 import "./App.css";
 
@@ -39,6 +41,8 @@ const router = createBrowserRouter(
         <Route path="/geoquiz/:id" element={<GeoQuiz />} />
         <Route path="/geoquiz/:id/quiz" element={<Quiz />} />
         <Route path="/geoquiz/results" element={<GeoQuizResults />} />
+        <Route path="/facts" element={<FactsAndStats />} />
+        <Route path="/facts/:id" element={<USFact />} />
 
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>

@@ -1,0 +1,34 @@
+.usFact {
+  height: 100%;
+  width: 100%;
+}
+
+.usFact__container {
+  max-width: 720px;
+  width: 100%;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.usFact__flag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.usFact__data {
+  padding: 10px;
+  background-color: yellow;
+  line-height: 1.5;
+}
+
+.usFact__data p span {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.usFact__data h1 {
+  text-align: center;
+}
