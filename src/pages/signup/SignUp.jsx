@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useSignup } from "../../hooks/useSignup";
 import { useResend } from "../../hooks/useResend";
@@ -23,7 +23,8 @@ function SignUp() {
 
   useEffect(() => {
     if (user !== null) {
-      navigate("/", { replace: true });
+      <Navigate to={"/"} replace={true} />;
+      // navigate("/", { replace: true });
     }
 
     if (message == "USER_REGISTERED") {
@@ -66,7 +67,7 @@ function SignUp() {
   };
   return (
     <div>
-      {isLoading || spinnerLoading ? (
+      {isLoading ? (
         <CircularIndeterminate />
       ) : (
         <>
