@@ -1,0 +1,27 @@
+.geoResults__container {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.geoResults__container h1 {
+  font-size: 2.5em;
+}
+
+.geoResults__result {
+  padding-top: 1.5rem;
+}
+
+.geoResults__result div h4 {
+  padding-right: 10px;
+}
+
+.geoResults__result div {
+  display: flex;
+  flex-direction: row;
+}
+
+.start {
+  padding-top: 10px;
+}

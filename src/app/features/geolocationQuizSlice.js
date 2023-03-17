@@ -15,25 +15,31 @@ export const geoQuizSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    getGeoQuiz: (state, action) => {
+    getGeoQuiz: (state, action, numOfQuiz) => {
+      let slicer = action?.payload[1];
+      let data = action?.payload[0];
       // state.geoQuiz = action.payload;
       state.trace = state.trace;
-      state.answers = action.payload.questions.map((question) => {
-        return {
-          answer: question.answer,
-        };
-      });
-      state.queue = action.payload.questions.map((question) => {
-        return {
-          id: question.id,
-          question: question.question,
-          _id: question._id,
-        };
-      });
+      state.answers = data?.questions
+        ?.slice(0, Number(slicer))
+        .map((question) => {
+          return {
+            answer: question.answer,
+          };
+        });
+      state.queue = data?.questions
+        ?.slice(0, Number(slicer))
+        .map((question) => {
+          return {
+            id: question.id,
+            question: question.question,
+            _id: question._id,
+          };
+        });
       state.geoQuiz = {
-        _id: action.payload._id,
-        country: action.payload.country,
-        questions: action.payload.questions.map((question) => {
+        _id: data?._id,
+        country: data?.country,
+        questions: data?.questions?.slice(0, Number(slicer)).map((question) => {
           return {
             id: question.id,
             question: question.question,

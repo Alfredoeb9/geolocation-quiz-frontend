@@ -8,6 +8,7 @@ import { attempts_Number } from "../../helper/helper";
 import { earnPoints_Number } from "../../helper/helper";
 import { flagResult } from "../../helper/helper";
 import { postResultData } from "../../hooks/usePostResult";
+import "./geoQuizResults.css";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
@@ -15,11 +16,14 @@ function GeoQuizResults() {
   const {
     geoQuiz: { geoQuiz, queue, answers },
     results: { result, userId },
+    user,
   } = useSelector((state) => state);
 
   // useEffect(() => {
   //   console.log(earnPoints);
   // });
+
+  console.log(user);
 
   let cookieUser = localStorage.getItem("user");
 
@@ -43,7 +47,7 @@ function GeoQuizResults() {
       await postResultData(
         `http://localhost:4000/api/result`,
         resultData,
-        (data) => data
+        (data) => console.log(data)
       );
     } catch (error) {
       console.log(error);
@@ -59,31 +63,31 @@ function GeoQuizResults() {
 
   return (
     <div className="geoResults__container">
-      <h1 className="title text-light">Quiz Application</h1>
+      <h1>Quiz Application Results</h1>
 
-      <div className="geoResults__result flex-center">
+      <div className="geoResults__result">
         <div>
-          <span>Username</span>
+          <h4>Username:</h4> <span>{user.user.username}</span>
           {/* <span className="bold">{userId || ""}</span> */}
         </div>
         <div>
-          <span>Total Quiz Points : </span>
+          <h4>Total Quiz Points: </h4>
           <span className="bold">{totalPoints || 0}</span>
         </div>
         <div>
-          <span>Total Questions : </span>
+          <h4>Total Questions: </h4>
           <span className="bold">{queue.length || 0}</span>
         </div>
         <div>
-          <span>Total Attempts : </span>
+          <h4>Total Attempts: </h4>
           <span className="bold">{attempts || 0}</span>
         </div>
         <div>
-          <span>Total Earn Points : </span>
+          <h4>Total Earn Points: </h4>
           <span className="bold">{earnPoints || 0}</span>
         </div>
         <div>
-          <span>Quiz Result</span>
+          <h4>Quiz Result: </h4>
           <span
             style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }}
             className="bold"
@@ -99,10 +103,10 @@ function GeoQuizResults() {
         </Link>
       </div>
 
-      <div className="container">
-        {/* result table */}
+      {/* <div className="container">
+        
         <GeoQuizTable />
-      </div>
+      </div> */}
     </div>
   );
 }

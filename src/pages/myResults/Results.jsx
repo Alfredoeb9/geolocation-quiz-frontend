@@ -19,6 +19,9 @@ function Results() {
           <div className="quiz__geolocation__tab">
             <Link to={`/results/${data[1]?._id}`}>{data[1]?.country}</Link>
           </div>
+          <div className="quiz__geolocation__tab">
+            <Link to={`/results/${data[2]?._id}`}>{data[2]?.country}</Link>
+          </div>
         </div>
       </div>
     </div>

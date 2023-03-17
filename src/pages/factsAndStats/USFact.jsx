@@ -82,8 +82,8 @@ function USFact() {
             <span>Lakes and Reservoirs:</span> {data.lakesAndReservoirs}
           </p>
           <p>
-            <span>Plateau: </span>
-            {data.plateau}
+            <span>Plateaus: </span>
+            {data.plateaus}
           </p>
           <p>
             <span>Islands: </span>
