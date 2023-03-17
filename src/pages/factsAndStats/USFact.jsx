@@ -23,7 +23,7 @@ function USFact() {
       setLoading(true);
       setError(null);
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/usfact/${id}`,
+        `${process.env.REACT_APP_API_URL}/usfact/${id}`,
         {
           method: "GET",
         }

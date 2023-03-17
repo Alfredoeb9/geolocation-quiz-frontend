@@ -13,7 +13,7 @@ export const useUpdateProfile = () => {
     console.log(firstName, lastName, email);
 
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/auth/updateuser`,
+      `${process.env.REACT_APP_API_URL}/auth/updateuser`,
       {
         method: "PUT",
         headers: {

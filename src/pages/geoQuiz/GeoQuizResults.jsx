@@ -45,7 +45,7 @@ function GeoQuizResults() {
     try {
       // if (result !== [] && !userId) throw new Error("Couldn't get Result");
       await postResultData(
-        `${process.env.REACT_APP_API_URL}/api/result`,
+        `${process.env.REACT_APP_API_URL}/result`,
         resultData,
         (data) => console.log(data)
       );
