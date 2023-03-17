@@ -4,7 +4,7 @@ import "../geoQuiz/geoQuizHome.css";
 
 function Results() {
   const { data, loading, error } = useFetch(
-    "http://localhost:4000/api/geolocation"
+    `${process.env.REACT_APP_API_URL}/api/geolocation`
   );
 
   return (

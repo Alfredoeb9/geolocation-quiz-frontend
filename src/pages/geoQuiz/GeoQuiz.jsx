@@ -25,7 +25,7 @@ function GeoQuiz() {
       setLoading(true);
       setError(null);
       const response = await fetch(
-        `http://localhost:4000/api/geolocation/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/geolocation/${id}`,
         {
           method: "GET",
         }
@@ -69,7 +69,7 @@ function GeoQuiz() {
     e.preventDefault();
 
     const response = await fetch(
-      `http://localhost:4000/api/geolocation/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/geolocation/${id}`,
       {
         method: "POST",
         body: JSON.stringify({ quizNum: numofGeoQuiz }),

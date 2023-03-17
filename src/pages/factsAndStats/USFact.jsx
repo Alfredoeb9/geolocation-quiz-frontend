@@ -22,9 +22,12 @@ function USFact() {
     const fetchGeoData = async () => {
       setLoading(true);
       setError(null);
-      const response = await fetch(`http://localhost:4000/api/usfact/${id}`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/usfact/${id}`,
+        {
+          method: "GET",
+        }
+      );
 
       const json = await response.json();
 

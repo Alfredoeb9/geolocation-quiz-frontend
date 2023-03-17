@@ -19,7 +19,7 @@ function MyResults() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getResultData(
-        `http://localhost:4000/api/result/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/result/${id}`,
         { username }
       );
 

@@ -27,7 +27,9 @@ import useFetch from "../../hooks/useFetch";
 */
 
 function FactsAndStats() {
-  const { data, loading, error } = useFetch("http://localhost:4000/api/usfact");
+  const { data, loading, error } = useFetch(
+    `${process.env.REACT_APP_API_URL}/api/usfact`
+  );
 
   // if (loading) {
   //   <CircularIndeterminate />;

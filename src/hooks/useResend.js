@@ -13,7 +13,7 @@ export const useResend = () => {
     setError(null);
 
     const response = await fetch(
-      `http://localhost:4000/api/auth/resend-verification-email`,
+      `${process.env.REACT_APP_API_URL}/api/auth/resend-verification-email`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

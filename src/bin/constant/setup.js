@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "local") {
 if (process.env.NODE_ENV === "development") {
   ssl = "https://";
   frontendUrl = "localhost:3000/";
-  apiURL = "http://localhost:4000/";
+  apiURL = `${process.env.REACT_APP_API_URL}/`;
 }
 
 module.exports = {
