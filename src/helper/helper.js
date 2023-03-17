@@ -3,8 +3,8 @@ export function attempts_Number(result) {
 }
 
 export function earnPoints_Number(result, answers, point) {
-  // console.log('result::', result)
-  // console.log('answers::', answers)
+  console.log("result::", result);
+  console.log("answers::", answers);
   return result
     .map((ele, i) => answers[i].answer == ele)
     .filter((i) => i)
