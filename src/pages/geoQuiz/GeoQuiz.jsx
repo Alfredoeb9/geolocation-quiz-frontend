@@ -141,33 +141,6 @@ function GeoQuiz() {
                   <option className="tt-suggestion tt-selectable" value={25}>
                     25
                   </option>
-                  <option className="tt-suggestion tt-selectable" value={30}>
-                    30
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={35}>
-                    35
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={40}>
-                    40
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={45}>
-                    45
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={50}>
-                    50
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={55}>
-                    55
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={60}>
-                    60
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={65}>
-                    65
-                  </option>
-                  <option className="tt-suggestion tt-selectable" value={70}>
-                    75
-                  </option>
                 </select>
               </div>
             </div>
