@@ -1,4 +1,5 @@
 import { pushResult, updateResult } from "../app/features/resultSlice";
+// ghost commit
 
 export const PushAnswer = (result) => async (dispatch) => {
   console.log(result);
