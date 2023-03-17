@@ -8,7 +8,7 @@ export function earnPoints_Number(result, answers, point) {
   console.log("result::", result);
   console.log("answers::", answers);
   return result
-    .map((ele, i) => answers[i].answer == titleCase(ele))
+    .map((ele, i) => titleCase(answers[i].answer) == titleCase(ele))
     .filter((i) => i)
     .map((i) => point)
     .reduce((prev, curr) => prev + curr, 0);
