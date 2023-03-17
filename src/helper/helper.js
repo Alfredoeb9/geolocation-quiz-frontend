@@ -6,7 +6,7 @@ export function earnPoints_Number(result, answers, point) {
   // console.log('result::', result)
   // console.log('answers::', answers)
   return result
-    .map((ele, i) => Number(answers[i].answer) == Number(ele))
+    .map((ele, i) => answers[i].answer == ele)
     .filter((i) => i)
     .map((i) => point)
     .reduce((prev, curr) => prev + curr, 0);
