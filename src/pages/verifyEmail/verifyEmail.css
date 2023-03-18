@@ -1,0 +1,31 @@
+.verify-email {
+  width: inherit;
+}
+
+.verify-email__container {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  max-width: 554px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.email-verified {
+  font-size: large;
+}
+
+.email-verified > div {
+  padding-bottom: 12px;
+}
+
+.verified-error {
+  font-size: large;
+}
+
+.verified-error > div {
+  padding-bottom: 12px;
+}

@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import authAPI from "../../app/api/authApi";
 import { verifyEmail } from "../../app/features/AuthContext";
+import "./verifyEmail.css";
+import CircularIndeterminate from "../../components/spinner/Spinner";
 
 export default function VerifyEmail() {
   const { id } = useParams();
@@ -42,9 +44,9 @@ export default function VerifyEmail() {
   }, []);
 
   return (
-    <div>
+    <div className="verify-email">
       {isLoading ? (
-        <div>Waiting </div>
+        <CircularIndeterminate />
       ) : (
         <>
           {/* <Header className='h-20 relative container mx-auto'>
@@ -62,10 +64,10 @@ export default function VerifyEmail() {
               </div>
             </div>
           </Header> */}
-          <div className="mt-10 pt-10 w-[85%] max-w-[554px] pb-12 bg-white-100 rounded-[20px] m-auto shadow flex flex-col text-center">
+          <div className="verify-email__container">
             <p>Verify Email</p>
             {isSuccess && (
-              <div className="text-lg">
+              <div className="email-verified text-lg">
                 <div className="pb-12">
                   <div style={{ fontSize: "4rem", color: "#82e082" }} />
                 </div>
@@ -79,11 +81,11 @@ export default function VerifyEmail() {
               </div>
             )}
             {isError && (
-              <div className="text-lg">
+              <div className="verified-error text-lg">
                 <div className="pb-12">
                   <div style={{ fontSize: "4rem", color: "#FD8282" }} />
                 </div>
-                <span className="font-bold"> {message} </span>
+                <span style={{ fontWeight: "bold" }}> {message} </span>
               </div>
             )}
           </div>
