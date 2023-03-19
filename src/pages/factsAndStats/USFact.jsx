@@ -49,86 +49,86 @@ function USFact() {
   return (
     <div className="usFact">
       <Helmet>
-        <title>GeographQuizWorld | {data.stateName} Facts and Stats</title>
+        <title>{`GeographQuizWorld | ${data?.stateName} Facts and Stats`}</title>
         <meta
           name="description"
-          content={`Study facts about ${data.stateName}. Learn more about ${data.stateName}: Capital city, Statehood, Major Cities, Population and more geographic facts!`}
+          content={`Study facts about ${data?.stateName}. Learn more about ${data?.stateName}: Capital city, Statehood, Major Cities, Population and more geographic facts!`}
         />
       </Helmet>
       <div className="usFact__container">
         <div className="usFact__data">
-          <h1>{data.stateName}</h1>
+          <h1>{data?.stateName}</h1>
           <p>
-            <span>Capital:</span> {data.capital}
+            <span>Capital:</span> {data?.capital}
           </p>
           <p>
-            <span>Statehood:</span> {data.statehood}
+            <span>Statehood:</span> {data?.statehood}
           </p>
           <p>
             <span>Major cities: </span>
-            {data.majorCities}
+            {data?.majorCities}
           </p>
           <p>
-            <span>Population:</span> {data.population}
+            <span>Population:</span> {data?.population}
           </p>
           <p>
-            <span>Area:</span> {data.area}
+            <span>Area:</span> {data?.area}
           </p>
           <p>
-            <span>Bordering States:</span> {data.borderingStates}
+            <span>Bordering States:</span> {data?.borderingStates}
           </p>
           <p>
-            <span>Nicknames:</span> {data.nickNames}
+            <span>Nicknames:</span> {data?.nickNames}
           </p>
           <p>
             <span>Mountain Ranges: </span>
-            {data.mountainRanges}
+            {data?.mountainRanges}
           </p>
           <p>
             <span>Rivers: </span>
-            {data.rivers}
+            {data?.rivers}
           </p>
           <p>
-            <span>Lakes and Reservoirs:</span> {data.lakesAndReservoirs}
+            <span>Lakes and Reservoirs:</span> {data?.lakesAndReservoirs}
           </p>
           <p>
             <span>Plateaus: </span>
-            {data.plateaus}
+            {data?.plateaus}
           </p>
           <p>
             <span>Islands: </span>
-            {data.islands}
+            {data?.islands}
           </p>
           <p>
             <span>Caves: </span>
-            {data.caves}
+            {data?.caves}
           </p>
           <p>
             <span>Canyons: </span>
-            {data.canyons}
+            {data?.canyons}
           </p>
           <p>
             <span>Valleys: </span>
-            {data.valleys}
+            {data?.valleys}
           </p>
           <p>
             <span>National Forests: </span>
-            {data.nationalForests}
+            {data?.nationalForests}
           </p>
           <p>
             <span>National Monument: </span>
-            {data.nationalMonument}
+            {data?.nationalMonument}
           </p>
           <p>
             <span>Major Airports </span>
-            {data.majorAirports}
+            {data?.majorAirports}
           </p>
         </div>
 
         <img
           className="usFact__flag"
-          alt={`${data.stateName} state flag`}
-          src={`${data.flag}`}
+          alt={`${data?.stateName} state flag`}
+          src={`${data?.flag}`}
         />
       </div>
     </div>
