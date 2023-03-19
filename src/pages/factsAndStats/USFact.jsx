@@ -5,6 +5,7 @@ import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 import "./usFact.css";
 import { Helmet } from "react-helmet-async";
+import { postscribe } from "postscribe";
 
 function USFact() {
   const dispatch = useDispatch();
@@ -46,6 +47,32 @@ function USFact() {
     fetchGeoData();
   }, [id]);
 
+  // postscribe(
+  //   ".usFact__data",
+  //   `<script type="application/ld+json">
+  //     {
+  //       "@context": "https://schema.org",
+  //       "@type": "NewsArticle",
+  //       "headline": "Article headline",
+  //       "image": "",
+  //       "datePublished": "2023-03-19T07:51:59+00:00",
+  //       "dateModified": "2023-03-19T07:51:59+00:00",
+  //       "author": {
+  //         "@type": "Person",
+  //         "name": "Alfredo Barillas"
+  //       },
+  //       "description":
+  //         "Learn essesential geographic facts about the 50 states, District of Columbia, and more!",
+  //       "isAccessibleForFree": "True",
+  //       "hasPart": {
+  //         "@type": "WebPageElement",
+  //         "isAccessibleForFree": "True",
+  //         "cssSelector": ".usFact__data"
+  //       }
+  //     }
+  // </script>`
+  // );
+
   return (
     <div className="usFact">
       <Helmet>
@@ -54,6 +81,28 @@ function USFact() {
           name="description"
           content={`Study facts about ${data?.stateName}. Learn more about ${data?.stateName}: Capital city, Statehood, Major Cities, Population and more geographic facts!`}
         />
+        <script className="structured-data-list" type="application/ld+json">{`
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": ${data?.stateName} Fact Files,
+        "image": ${data?.flag},
+        "datePublished": "2023-03-19T07:51:59+00:00",
+        "dateModified": "2023-03-19T07:51:59+00:00",
+        "author": {
+          "@type": "Person",
+          "name": "Alfredo Barillas"
+        },
+        "description":
+          "Learn essesential geographic facts about ${data?.statename}",
+        "isAccessibleForFree": "True",
+        "hasPart": {
+          "@type": "WebPageElement",
+          "isAccessibleForFree": "True",
+          "cssSelector": ".usFact__data"
+        }
+      }
+  `}</script>
       </Helmet>
       <div className="usFact__container">
         <div className="usFact__data">
