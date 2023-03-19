@@ -1,0 +1,50 @@
+{
+  "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "plugin:react/jsx-runtime",
+    "plugin:testing-library/react",
+    "plugin:jest/all"
+  ],
+  "plugins": ["react", "react-hooks"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "n/exports-style": "off",
+    "n/file-extension-in-import": "off",
+    "n/prefer-global/buffer": "off",
+    "n/prefer-global/console": "off",
+    "n/prefer-global/process": "off",
+    "n/prefer-global/url-search-params": "off",
+    "n/prefer-global/url": "off",
+    "semi": 0,
+    "quotes": "off",
+    "space-before-function-paren": "off",
+    "comma-dangle": "off",
+    "no-unused-vars": "off",
+    "camelcase": "off",
+    "eqeqeq": "off",
+    "no-duplicate-imports": "off",
+    "multiline-ternary": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react-hooks/rules-of-hooks": 0,
+    "curly": "off",
+    "import/no-duplicates": "off",
+    "no-trailing-spaces": "off",
+    "array-callback-return": "off",
+    "prefer-const": "off",
+    "jest/require-hook": "off"
+  }
+}
