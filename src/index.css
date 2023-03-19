@@ -138,3 +138,15 @@ div.login {
   text-decoration: none;
   color: black;
 }
+
+.amz-ad-container {
+  height: 200px;
+}
+
+#amzn-assoc-ad-b14a52ba-f95b-4330-838f-47deab2cec43 {
+  height: inherit;
+}
+
+#amzn-assoc-ad-b14a52ba-f95b-4330-838f-47deab2cec43 > div {
+  display: block;
+}

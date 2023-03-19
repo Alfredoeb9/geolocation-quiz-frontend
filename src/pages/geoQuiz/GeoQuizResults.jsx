@@ -9,6 +9,7 @@ import { earnPoints_Number } from "../../helper/helper";
 import { flagResult } from "../../helper/helper";
 import { postResultData } from "../../hooks/usePostResult";
 import "./geoQuizResults.css";
+import AmazonAdd from "../../components/ad/AmazonAd";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
@@ -102,6 +103,8 @@ function GeoQuizResults() {
           Restart
         </Link>
       </div>
+
+      <AmazonAdd />
 
       {/* <div className="container">
         
