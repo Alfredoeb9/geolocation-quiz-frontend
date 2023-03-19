@@ -148,5 +148,5 @@ div.login {
 }
 
 #amzn-assoc-ad-b14a52ba-f95b-4330-838f-47deab2cec43 > div {
-  display: block;
+  display: block !important;
 }
