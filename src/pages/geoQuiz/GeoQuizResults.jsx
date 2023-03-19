@@ -10,6 +10,7 @@ import { flagResult } from "../../helper/helper";
 import { postResultData } from "../../hooks/usePostResult";
 import "./geoQuizResults.css";
 import AmazonAdd from "../../components/ad/AmazonAd";
+import { Helmet } from "react-helmet-async";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
@@ -19,12 +20,6 @@ function GeoQuizResults() {
     results: { result, userId },
     user,
   } = useSelector((state) => state);
-
-  // useEffect(() => {
-  //   console.log(earnPoints);
-  // });
-
-  console.log(user);
 
   let cookieUser = localStorage.getItem("user");
 

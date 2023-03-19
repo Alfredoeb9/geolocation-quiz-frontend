@@ -141,6 +141,7 @@ div.login {
 
 .amz-ad-container {
   height: 200px;
+  padding-top: 20px;
 }
 
 #amzn-assoc-ad-b14a52ba-f95b-4330-838f-47deab2cec43 {
@@ -150,3 +151,29 @@ div.login {
 #amzn-assoc-ad-b14a52ba-f95b-4330-838f-47deab2cec43 > div {
   display: block !important;
 }
+
+.start {
+  background: var(--primary);
+  max-width: fit-content;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.start a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* @media screen and (max-width: 425px) {
+  .amz-ad-container {
+    height: 260px;
+  }
+  .products {
+    font-size: 1.2rem;
+  }
+} */

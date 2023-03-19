@@ -11,6 +11,7 @@
 
 .geoResults__result {
   padding-top: 1.5rem;
+  line-height: 1.3;
 }
 
 .geoResults__result div h4 {

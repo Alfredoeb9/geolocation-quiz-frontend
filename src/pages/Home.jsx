@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { resetAllAction } from "../app/features/geolocationQuizSlice";
@@ -13,6 +14,13 @@ function Home() {
   });
   return (
     <div className="home">
+      <Helmet>
+        <title>GeographQuizWorld | Home</title>
+        <meta
+          name="description"
+          content="Geography Quiz World coveres topics such as world geography, famous landmarks, and cultural traditions, our website provides a unique learning experience that's both informative and entertaining."
+        />
+      </Helmet>
       <div id="box"></div>
       <div className="stars"></div>
       <div className="twinkling"></div>

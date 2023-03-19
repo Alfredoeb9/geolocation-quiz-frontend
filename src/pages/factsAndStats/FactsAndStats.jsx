@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 import useFetch from "../../hooks/useFetch";
@@ -41,6 +42,13 @@ function FactsAndStats() {
 
   return (
     <div className="quiz">
+      <Helmet>
+        <title>GeographQuizWorld | Facts and Stats</title>
+        <meta
+          name="description"
+          content="Study fact files from a wide range of topics such as world geography, famous landmarks, and cultural tranditions."
+        />
+      </Helmet>
       <div className="quiz__container">
         {loading ? (
           <CircularIndeterminate />

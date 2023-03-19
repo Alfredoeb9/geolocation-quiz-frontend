@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 // import { login } from "./app/features/AuthContext";
 import RootLayout from "./layouts/RootLayout";
 
@@ -59,6 +60,8 @@ const router = createBrowserRouter(
 
 function App() {
   const dispatch = useDispatch();
+
+  const helmetContext = {};
   // useEffect(() => {
   //   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -66,7 +69,11 @@ function App() {
   //     dispatch(login(user))
   //   }
   // }, [dispatch])
-  return <RouterProvider router={router} />;
+  return (
+    <HelmetProvider context={helmetContext}>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+  );
 }
 
 export default App;

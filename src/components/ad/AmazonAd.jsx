@@ -26,7 +26,7 @@ const AmazonAdd = () => {
     amzn_assoc_default_search_phrase = "geography books";
     amzn_assoc_default_category = "All";
     amzn_assoc_linkid = "71b3b06beeaebf8447b5a04bf61e7869";
-    amzn_assoc_title = "Shop Related Products";
+    amzn_assoc_title = "Consider Purhcasing A Geography Book";
     amzn_assoc_search_bar = "false";
     amzn_assoc_search_bar_position = "top"`;
 

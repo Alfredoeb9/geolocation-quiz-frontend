@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const center = { lat: 38.889484, lng: -77.035278 };
 
@@ -15,6 +16,13 @@ function GeoMaps() {
 
   return (
     <div>
+      <Helmet>
+        <title>GeographQuizWorld | Maps</title>
+        <meta
+          name="description"
+          content={`Study the geographic world in map format, learn more about landforms, continents, oceans, and more! `}
+        />
+      </Helmet>
       <div
         style={{
           position: "absolute",

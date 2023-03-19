@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 import "./usFact.css";
+import { Helmet } from "react-helmet-async";
 
 function USFact() {
   const dispatch = useDispatch();
@@ -45,9 +46,15 @@ function USFact() {
     fetchGeoData();
   }, [id]);
 
-  console.log(data);
   return (
     <div className="usFact">
+      <Helmet>
+        <title>GeographQuizWorld | {data.stateName} Facts and Stats</title>
+        <meta
+          name="description"
+          content={`Study facts about ${data.stateName}. Learn more about ${data.stateName}: Capital city, Statehood, Major Cities, Population and more geographic facts!`}
+        />
+      </Helmet>
       <div className="usFact__container">
         <div className="usFact__data">
           <h1>{data.stateName}</h1>
