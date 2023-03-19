@@ -1,3 +1,17 @@
+.goBack {
+  position: absolute;
+  top: 80px;
+  left: 164px;
+  padding: 8px 22px;
+  font-size: large;
+  transition: all 0.3s ease-in;
+}
+
+.goBack:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
 .usFact {
   height: 100%;
   width: 100%;

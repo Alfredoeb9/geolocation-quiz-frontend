@@ -47,6 +47,10 @@ function USFact() {
     fetchGeoData();
   }, [id]);
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   // postscribe(
   //   ".usFact__data",
   //   `<script type="application/ld+json">
@@ -75,6 +79,9 @@ function USFact() {
 
   return (
     <div className="usFact">
+      <button className="goBack" onClick={goBack}>
+        Back
+      </button>
       <Helmet>
         <title>{`GeographQuizWorld | ${data?.stateName} Facts and Stats`}</title>
         <meta
@@ -93,8 +100,7 @@ function USFact() {
               "@type": "Person",
               name: "Alfredo Barillas",
             },
-            description:
-              "Learn essesential geographic facts about ${data?.statename}",
+            description: `Learn essesential geographic facts about ${data?.statename}`,
             isAccessibleForFree: "True",
             hasPart: {
               "@type": "WebPageElement",
