@@ -17,22 +17,22 @@ function Welcome() {
           content="geograph, geography quiz, geo quiz, world quiz"
         />
         <script className="structured-data-list" type="application/ld+json">
-          {`{
+          {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "GeographQuizWorld",
-            "operatingSystem": ["ANDROID", "IOS", "Windows", "OS", "OSX"],
-            "applicationCategory": "WebApplication",
-            "aggregateRating": {
+            name: "GeographQuizWorld",
+            operatingSystem: ["ANDROID", "IOS", "Windows", "OS", "OSX"],
+            applicationCategory: "WebApplication",
+            aggregateRating: {
               "@type": "AggregateRating",
-              "ratingValue": "4.6",
-              "ratingCount": "10",
+              ratingValue: "4.6",
+              ratingCount: "10",
             },
-            "offers": {
+            offers: {
               "@type": "Offer",
-              "price": "0",
+              price: "0",
             },
-          }`}
+          })}
         </script>
       </Helmet>
       <div className="welcome__container">
