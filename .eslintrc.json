@@ -45,6 +45,7 @@
     "no-trailing-spaces": "off",
     "array-callback-return": "off",
     "prefer-const": "off",
-    "jest/require-hook": "off"
+    "jest/require-hook": "off",
+    "no-template-curly-in-string": "off"
   }
 }

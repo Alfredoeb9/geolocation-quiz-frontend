@@ -81,28 +81,28 @@ function USFact() {
           name="description"
           content={`Study facts about ${data?.stateName}. Learn more about ${data?.stateName}: Capital city, Statehood, Major Cities, Population and more geographic facts!`}
         />
-        <script className="structured-data-list" type="application/ld+json">{`
-      {
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": ${data?.stateName} Fact Files,
-        "image": ${data?.flag},
-        "datePublished": "2023-03-19T07:51:59+00:00",
-        "dateModified": "2023-03-19T07:51:59+00:00",
-        "author": {
-          "@type": "Person",
-          "name": "Alfredo Barillas"
-        },
-        "description":
-          "Learn essesential geographic facts about ${data?.statename}",
-        "isAccessibleForFree": "True",
-        "hasPart": {
-          "@type": "WebPageElement",
-          "isAccessibleForFree": "True",
-          "cssSelector": ".usFact__data"
-        }
-      }
-  `}</script>
+        <script className="structured-data-list" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            headline: `${data?.stateName} Fact Files`,
+            image: `${data?.flag}`,
+            datePublished: "2023-03-19T07:51:59+00:00",
+            dateModified: "2023-03-19T07:51:59+00:00",
+            author: {
+              "@type": "Person",
+              name: "Alfredo Barillas",
+            },
+            description:
+              "Learn essesential geographic facts about ${data?.statename}",
+            isAccessibleForFree: "True",
+            hasPart: {
+              "@type": "WebPageElement",
+              isAccessibleForFree: "True",
+              cssSelector: ".usFact__data",
+            },
+          })}
+        </script>
       </Helmet>
       <div className="usFact__container">
         <div className="usFact__data">
