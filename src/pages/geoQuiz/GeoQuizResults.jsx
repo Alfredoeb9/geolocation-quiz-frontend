@@ -94,7 +94,7 @@ function GeoQuizResults() {
       </div>
 
       <div className="start">
-        <Link className="btn" to={"/"} onClick={onRestart}>
+        <Link className="btn" to={"/geoquiz"} onClick={onRestart}>
           Restart
         </Link>
       </div>
