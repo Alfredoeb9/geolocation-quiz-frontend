@@ -9,16 +9,16 @@ function Input() {
   const [wordInput, setWordInput] = useState(false);
   // console.log(fieldsPosX, fieldsPosY, fieldsWidth, fieldsHeight);
 
-  useEffect(() => {
-    if (type === "INPUT_NUM") {
-      type = "number";
-    } else if (type === "INPUT_WORD") {
-      setWordInput(true);
-      type = "text";
-    } else if (type === "INPUT_PARA") {
-      type = "text";
-    }
-  }, [type]);
+  // useEffect(() => {
+  //   if (type === "INPUT_NUM") {
+  //     type = "number";
+  //   } else if (type === "INPUT_WORD") {
+  //     setWordInput(true);
+  //     type = "text";
+  //   } else if (type === "INPUT_PARA") {
+  //     type = "text";
+  //   }
+  // }, [type]);
 
   // console.log('currentId:: ', currentId);
   // console.log(`input id:: - input-text${id}`);
@@ -28,7 +28,7 @@ function Input() {
     <div>
       <input
         onClick={(e) => handleChange(e)}
-        id={`input-text${id}`}
+        id={`input-text`}
         name="test"
         // value={currentId == `input-text${id}` ? currentValue : null}
         type={"text"}
