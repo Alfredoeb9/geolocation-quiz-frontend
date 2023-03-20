@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   createBrowserRouter,
   Route,
@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
+import ReactGA from "react-ga4";
 // import { login } from "./app/features/AuthContext";
 import RootLayout from "./layouts/RootLayout";
 
@@ -62,6 +63,15 @@ function App() {
   const dispatch = useDispatch();
 
   const helmetContext = {};
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+      title: "Pages Data",
+    });
+  }, []);
+
+  ReactGA.initialize(process.env.REACT_APP_GA_ID);
   // useEffect(() => {
   //   const user = JSON.parse(localStorage.getItem("user"));
 

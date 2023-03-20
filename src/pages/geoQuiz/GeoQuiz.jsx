@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
 import shuffleArray from "../../utils/shuffleArray";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import useAnalyticsEventTracker from "../../components/useAnalyticsEventTracker";
 import "./geoQuiz.css";
 
 function GeoQuiz() {
@@ -19,6 +20,7 @@ function GeoQuiz() {
   const [checked, setChecked] = useState(false);
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const gaEventTracker = useAnalyticsEventTracker("Quiz");
 
   useEffect(() => {
     const fetchGeoData = async () => {
@@ -145,7 +147,9 @@ function GeoQuiz() {
               </div>
             </div>
 
-            <button>Begin Quiz!</button>
+            <button onClick={() => gaEventTracker("Start Quiz")}>
+              Begin Quiz!
+            </button>
 
             {error && <div className="error">{error}</div>}
           </form>
