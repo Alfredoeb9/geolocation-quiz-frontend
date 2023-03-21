@@ -40,6 +40,17 @@ function Home() {
           <Link to={"/"}>Coming Up</Link>
         </div>
       </div>
+
+      <span
+        style={{
+          color: "#fff",
+          zIndex: "999",
+          position: "absolute",
+          bottom: "0",
+        }}
+      >
+        Created by: <a href="https://alfredoesdesign.com/">Alfredo Barillas</a>
+      </span>
     </div>
   );
 }
