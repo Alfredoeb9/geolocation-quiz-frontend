@@ -19,6 +19,11 @@
   text-align: center;
   background-color: var(--componentBackground);
   transition: all 0.1s ease-in;
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .quiz__geolocation__tab a {
@@ -29,9 +34,27 @@
   height: 100%;
   text-decoration: none;
   font-size: 1.5rem;
+  font-weight: bold;
   color: #fff;
+  z-index: 3;
+  opacity: 1;
+  position: relative;
+  background-color: transparent;
 }
 
 .quiz__geolocation__tab:hover {
   scale: 1.03;
+}
+
+.quiz-overlay {
+  background-color: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .quiz__geolocation__container {
+    grid-template-columns: 1fr;
+  }
 }

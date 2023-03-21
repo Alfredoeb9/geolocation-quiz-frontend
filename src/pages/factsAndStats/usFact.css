@@ -41,8 +41,22 @@
 .usFact__data p span {
   font-weight: bold;
   font-size: 17px;
+  text-decoration: underline;
 }
 
 .usFact__data h1 {
   text-align: center;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 425px) {
+  .goBack {
+    left: 20px;
+    padding: 6px 20px;
+    font-size: medium;
+  }
+  .usFact__data {
+    height: 500px;
+    overflow-y: scroll;
+  }
 }
