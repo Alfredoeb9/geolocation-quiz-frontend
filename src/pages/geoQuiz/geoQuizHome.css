@@ -55,6 +55,8 @@
 
 @media screen and (max-width: 425px) {
   .quiz__geolocation__container {
+    /* height: 550px;
+    overflow-y: scroll; */
     grid-template-columns: 1fr;
   }
 }
