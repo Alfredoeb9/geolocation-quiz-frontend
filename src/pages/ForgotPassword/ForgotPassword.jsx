@@ -47,11 +47,7 @@ function ForgotPassword() {
     } catch (error) {
       setIsFetching(false);
       setError(error);
-      toast("Error in sending your email. Please refresh and try again", {
-        progress: undefined,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
+      toast("Error in sending your email. Please refresh and try again");
     }
   };
   return (
@@ -60,7 +56,10 @@ function ForgotPassword() {
         <CircularIndeterminate />
       ) : dataSent ? (
         <div className="forgotPassword__sent">
-          <h3>Password Link has been sent to {emailRef.current.value}</h3>
+          <h3>
+            Password Link has been sent, please visit your email and follow the
+            instructions to reset your password
+          </h3>
         </div>
       ) : (
         <div className="forgotPassword__container">
