@@ -40,11 +40,7 @@ function ResetPassword() {
       if (response.ok) {
         setDataSent(true);
         setIsFetching(false);
-        toast("Password has been reset!", {
-          progress: undefined,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
+        toast("Password has been reset!");
         navigate("/login", { replace: true });
       }
 
