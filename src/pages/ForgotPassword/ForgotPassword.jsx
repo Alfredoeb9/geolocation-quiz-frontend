@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 
 function ForgotPassword() {
@@ -84,6 +84,7 @@ function ForgotPassword() {
           </p>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }
