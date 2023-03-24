@@ -38,7 +38,12 @@ function ForgotPassword() {
         if (response.ok) {
           setDataSent(true);
           setIsFetching(false);
-          navigate("/login", { replace: true });
+          toast("Password reset link has been sent to email!", {
+            progress: undefined,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+          // navigate("/login", { replace: true });
         }
 
         return json;
