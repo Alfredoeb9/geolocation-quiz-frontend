@@ -6,6 +6,7 @@ import { useResend } from "../../hooks/useResend";
 import { selectUserAuth } from "../../app/features/AuthContext";
 import { handleRedirect } from "../../utils/helperAuthentication";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import InfoIcon from "@mui/icons-material/Info";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { login2, error, isLoading } = useLogin();
   const { resend, error2, isLoading2 } = useResend();
+  const [show, setShow] = useState({ password: false });
 
   useEffect(() => {
     if (message == "USER_AUTHORIZED") {
@@ -78,13 +80,19 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
-
             <label>Password:</label>
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
+            <div className="input_Group">
+              <input
+                type={`${show.password ? "text" : "password"}`}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              <span
+                onClick={() => setShow({ ...show, password: !show.password })}
+              >
+                <InfoIcon size={25} />
+              </span>
+            </div>
 
             <button onClick={handleSubmit} disabled={isLoading}>
               Log in

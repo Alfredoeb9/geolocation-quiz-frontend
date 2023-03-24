@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import InfoIcon from "@mui/icons-material/Info";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,6 +13,7 @@ function ResetPassword() {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [dataSent, setDataSent] = useState(null);
+  const [show, setShow] = useState({ password: false, cpassword: false });
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -40,8 +42,12 @@ function ResetPassword() {
       if (response.ok) {
         setDataSent(true);
         setIsFetching(false);
-        toast("Password has been reset!");
-        navigate("/login", { replace: true });
+        toast(
+          "Password has been reset! You will be redirected to the login screen!"
+        );
+        setTimeout(() => {
+          navigate("/login", { replace: true });
+        }, "3000");
       }
 
       return json;
@@ -58,20 +64,37 @@ function ResetPassword() {
         <div className="resetPassword_container">
           <form onSubmit={handleResetPassword}>
             <label>New Password:</label>
-            <input
-              id="password"
-              ref={passwordInput}
-              type={"password"}
-              placeholder="New Password"
-            />
+            <div className="input_Group">
+              <input
+                id="password"
+                ref={passwordInput}
+                type={`${show.password ? "text" : "password"}`}
+                name="password"
+                placeholder="New Password"
+              />
+              <span
+                onClick={() => setShow({ ...show, password: !show.password })}
+              >
+                <InfoIcon size={25} />
+              </span>
+            </div>
 
             <label>Confirm Password</label>
-            <input
-              id="cpassword"
-              ref={confirmPasswordInput}
-              type={"password"}
-              placeholder="Confirm Password"
-            />
+            <div className="input_Group">
+              <input
+                id="cpassword"
+                ref={confirmPasswordInput}
+                type={`${show.cpassword ? "text" : "password"}`}
+                name="cpassword"
+                placeholder="Confirm Password"
+              />
+
+              <span
+                onClick={() => setShow({ ...show, cpassword: !show.cpassword })}
+              >
+                <InfoIcon size={25} />
+              </span>
+            </div>
 
             <button>Submit</button>
             {error && <div className="error">{error}</div>}

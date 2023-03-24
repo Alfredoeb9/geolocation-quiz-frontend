@@ -136,6 +136,12 @@ div.forgotPassword {
   border-radius: 4px;
 }
 
+.input_Group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* maps */
 .maps-return-button {
   position: absolute;
