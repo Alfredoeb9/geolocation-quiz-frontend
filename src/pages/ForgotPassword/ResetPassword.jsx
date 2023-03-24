@@ -1,13 +1,17 @@
 import { useRef, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import CircularIndeterminate from "../../components/spinner/Spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ResetPassword() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const passwordInput = useRef(null);
   const confirmPasswordInput = useRef(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+  const [dataSent, setDataSent] = useState(null);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -34,7 +38,14 @@ function ResetPassword() {
       }
 
       if (response.ok) {
+        setDataSent(true);
         setIsFetching(false);
+        toast("Password has been reset!", {
+          progress: undefined,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
+        navigate("/login", { replace: true });
       }
 
       return json;
@@ -69,6 +80,7 @@ function ResetPassword() {
             <button>Submit</button>
             {error && <div className="error">{error}</div>}
           </form>
+          <ToastContainer />
         </div>
       )}
     </div>
