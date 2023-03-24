@@ -13,7 +13,7 @@ const register = async (userData) => {
   const json = await response.json();
 
   if (!response.ok) {
-    console.log(json.error);
+    return json.error;
     //   setError(json.error);
   }
   return json;
@@ -61,7 +61,7 @@ const login = async (userData) => {
   console.log(json);
 
   if (!response.ok) {
-    console.log(json.error);
+    return json.error;
     //   setError(json.error);
   }
   return json;

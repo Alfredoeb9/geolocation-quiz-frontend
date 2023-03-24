@@ -92,6 +92,10 @@ function Login() {
             {error && <div className="error">{error}</div>}
           </form>
 
+          <p>
+            <Link to={"/forgot-password"}>Forgot Password?</Link>
+          </p>
+
           {verifyEmail && (
             <div className="login__verify">
               <span className="login__verify__span">
@@ -106,7 +110,7 @@ function Login() {
         </div>
       )}
       <p>
-        Don't have an account <Link to={"/login"}>Sign up</Link>
+        Don't have an account <Link to={"/signup"}>Sign up</Link>
       </p>
     </div>
   );

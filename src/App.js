@@ -23,6 +23,9 @@ import Quiz from "./pages/geoQuiz/Quiz";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/login/Login";
 import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ForgotPassword/ResetPassword";
+
 import SignUp from "./pages/signup/SignUp";
 import Results from "./pages/myResults/Results";
 import MyResults from "./pages/myResults/MyResults";
@@ -53,6 +56,8 @@ const router = createBrowserRouter(
       <Route path="/verify-email/:id" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:id" element={<ResetPassword />} />
       <Route path="/maps" element={<GeoMaps />} />
       <Route path="*" element={<NotFound />} />
     </Route>
