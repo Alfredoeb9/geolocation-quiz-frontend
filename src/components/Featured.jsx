@@ -7,8 +7,6 @@ function Featured() {
     `${process.env.REACT_APP_API_URL}/geolocation`
   );
 
-  console.log(data);
-
   return (
     <>
       <Link to={`/geoquiz/${data[0]?._id}`}>{data[0]?.country}</Link>

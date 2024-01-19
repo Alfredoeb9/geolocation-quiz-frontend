@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useSignup } from "../../hooks/useSignup";
 import { useResend } from "../../hooks/useResend";
-import { handleRedirect } from "../../utils/helperAuthentication";
 import { selectUserAuth } from "../../app/features/AuthContext";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 
@@ -44,19 +43,12 @@ function SignUp() {
       password,
     };
 
-    // console.log(user);
-
-    // dispatch(register(user));
-
     await signup(user);
   };
 
   const resendEmail = async () => {
     try {
       await resend(email);
-      // const resend = await authAPI.resendVerifyEmail(email);
-      // console.log(resend);
-      // return resend;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message)
         console.log(error);

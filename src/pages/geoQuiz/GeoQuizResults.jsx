@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import GeoQuizTable from "../../components/GeoResultTable";
 import { resetAllAction } from "../../app/features/geolocationQuizSlice";
 import { resetResult } from "../../app/features/resultSlice";
 import { attempts_Number } from "../../helper/helper";
@@ -9,7 +7,6 @@ import { earnPoints_Number } from "../../helper/helper";
 import { flagResult } from "../../helper/helper";
 import { postResultData } from "../../hooks/usePostResult";
 import "./geoQuizResults.css";
-import AmazonAdd from "../../components/ad/AmazonAd";
 import { Helmet } from "react-helmet-async";
 
 function GeoQuizResults() {
@@ -39,11 +36,9 @@ function GeoQuizResults() {
       achived: flag ? "Passed" : "Failed",
     };
     try {
-      // if (result !== [] && !userId) throw new Error("Couldn't get Result");
       await postResultData(
         `${process.env.REACT_APP_API_URL}/result`,
-        resultData,
-        (data) => console.log(data)
+        resultData
       );
     } catch (error) {
       console.log(error);
@@ -99,7 +94,7 @@ function GeoQuizResults() {
         </Link>
       </div>
 
-      <AmazonAdd />
+      {/* <AmazonAdd /> */}
 
       {/* <div className="container">
         

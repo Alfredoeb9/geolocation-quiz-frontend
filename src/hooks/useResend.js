@@ -8,7 +8,6 @@ export const useResend = () => {
   const [isLoading2, setIsLoading] = useState(null);
 
   const resend = async (email) => {
-    console.log(email);
     setIsLoading(true);
     setError(null);
 

@@ -12,10 +12,6 @@ function GeoQuizHome() {
   //   <CircularIndeterminate />;
   // }
 
-  data.map((data) => {
-    console.log(data);
-  });
-
   return (
     <div className="quiz">
       <div className="quiz__container">

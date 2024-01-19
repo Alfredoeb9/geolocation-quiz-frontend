@@ -14,7 +14,6 @@ const Navbar = () => {
   const { logout2 } = useLogout();
 
   const handleClick = () => {
-    console.log("logout controller clicked");
     logout2();
   };
 

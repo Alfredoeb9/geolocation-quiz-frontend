@@ -8,7 +8,6 @@ import CircularIndeterminate from "../../components/spinner/Spinner";
 
 export default function VerifyEmail() {
   const { id } = useParams();
-
   // const { Header } = Layout;
   const dispatch = useDispatch();
   // const { isLoading, isError, isSuccess } = useSelector((state) => state.auth);

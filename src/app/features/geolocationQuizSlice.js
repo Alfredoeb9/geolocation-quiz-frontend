@@ -18,7 +18,6 @@ export const geoQuizSlice = createSlice({
     getGeoQuiz: (state, action, numOfQuiz) => {
       let slicer = action?.payload[1];
       let data = action?.payload[0];
-      // state.geoQuiz = action.payload;
       state.trace = state.trace;
       state.answers = data?.questions
         ?.slice(0, Number(slicer))
@@ -46,14 +45,9 @@ export const geoQuizSlice = createSlice({
             _id: question._id,
           };
         }),
-        // _id: action.payload.questions.map((question) => {
-        //   return question._id;
-        // }),
       };
     },
     moveNextAction: (state) => {
-      // console.log("running this right now");
-      // let randomNum = Math.floor(Math.random() * 9) + 1
       return {
         ...state,
         trace: state.trace + 1,
@@ -85,8 +79,6 @@ export const geoQuizSlice = createSlice({
     },
 
     updateGeoQuiz: (state, action) => {
-      console.log(state.geoQuiz);
-      console.log(action.payload);
       state.geoQuiz = state.geoQuiz.filter(
         (geoQuiz) => geoQuiz._id !== action.payload._id
       );

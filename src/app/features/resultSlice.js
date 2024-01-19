@@ -8,17 +8,6 @@ const initialState = {
   result: [],
 };
 
-// export const worksheetDetails = createAsyncThunk('home/worksheetDetails', async (worksheetId, thunkAPI) => {
-//   console.log('worksheetId', worksheetId);
-//   try {
-//     const response = await homeAPI.worksheetDetails(worksheetId);
-//     return response;
-//   } catch (error) {
-//     const message = (error.response && error.response.data && error.response.message) || error.message || error.toString();
-//     return thunkAPI.rejectWithValue(message);
-//   }
-// });
-
 export const resultSlice = createSlice({
   name: "result",
   initialState,
@@ -32,8 +21,6 @@ export const resultSlice = createSlice({
     },
     updateResult: (state, action) => {
       const { trace, check } = action.payload;
-      // console.log(action.payload);
-      // console.log("updateresult", action.payload);
       state.result.fill(check, trace, trace + 1);
     },
     resetResult: (state, action) => {
@@ -41,17 +28,9 @@ export const resultSlice = createSlice({
       storage.removeItem("persist_root");
       localStorage.removeItem("persist:root");
       localStorage.removeItem("persist_root");
-      // removeCookie("geoQuiz");
       return initialState;
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(quizResults.fulfilled, (state, action) => {
-  //     state.isLoading = false;
-  //     state.isSuccess = true;
-  //     state.worksheetDetailsInfo = action.payload;
-  //   });
-  // },
 });
 
 export const { setUserId, pushResult, updateResult, resetResult } =

@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
-import shuffleArray from "../../utils/shuffleArray";
 import CircularIndeterminate from "../../components/spinner/Spinner";
 import useAnalyticsEventTracker from "../../components/useAnalyticsEventTracker";
 import "./geoQuiz.css";
 
 function GeoQuiz() {
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
   const [error, setError] = useState("");
@@ -49,20 +47,8 @@ function GeoQuiz() {
     fetchGeoData();
   }, [id]);
 
-  // const handleCheckedChange = (event) => {
-  //   setChecked(event.target.checked);
-  // };
-
-  // const handleTrackActivity = (e) => {
-  //   e.preventDefault();
-
-  //   setActivity(e.target.value);
-  // };
-
   const handleNumofGeoQuiz = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
-
     setNumofGeoQuiz(e.target.value);
   };
 
@@ -77,7 +63,6 @@ function GeoQuiz() {
         body: JSON.stringify({ quizNum: numofGeoQuiz }),
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${user.token}`,
         },
       }
     );
@@ -89,10 +74,6 @@ function GeoQuiz() {
       setError(json.error);
       setEmptyFields(json.emptyFields);
     }
-
-    // json?.questions?.slice(0, Number(numofGeoQuiz));
-
-    // shuffleArray(json.questions);
 
     if (response.ok) {
       setLoading(false);

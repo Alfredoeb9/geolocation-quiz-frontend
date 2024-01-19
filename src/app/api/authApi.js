@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const register = async (userData) => {
-  console.log("userData", userData);
   const response = await fetch(`${API_URL}/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -57,8 +56,6 @@ const login = async (userData) => {
   });
 
   const json = await response.json();
-
-  console.log(json);
 
   if (!response.ok) {
     return json.error;

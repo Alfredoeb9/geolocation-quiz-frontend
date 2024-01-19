@@ -53,7 +53,6 @@ function Quiz() {
 
   function onChecked(check) {
     setChecked(check);
-    // console.log(check);
   }
 
   // finish quiz after the last question

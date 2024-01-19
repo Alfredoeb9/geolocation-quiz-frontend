@@ -53,9 +53,6 @@ function Login() {
   const resendEmail = async () => {
     try {
       await resend(email);
-      // const resend = await authAPI.resendVerifyEmail(email);
-      // console.log(resend);
-      // return resend;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message)
         console.log(error);
@@ -112,7 +109,7 @@ function Login() {
               Please click on the Verify Email link in the email registered
               with.
               <br />
-              {/* <button onClick={resendEmail}>RESEND EMAIL</button> */}
+              <button onClick={resendEmail}>RESEND EMAIL</button>
             </div>
           )}
         </div>

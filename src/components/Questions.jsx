@@ -17,8 +17,6 @@ function Questions({ onChecked }) {
   const [initialQueue, setInitialQueue] = useState(undefined);
   const ref = useRef(null);
 
-  console.log("trace::", trace);
-
   useEffect(() => {
     // setChecked(checked);
     setInitialQueue(queue[trace]);

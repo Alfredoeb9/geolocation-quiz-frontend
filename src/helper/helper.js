@@ -5,8 +5,6 @@ export function attempts_Number(result) {
 }
 
 export function earnPoints_Number(result, answers, point) {
-  console.log("result::", result);
-  console.log("answers::", answers);
   return result
     .map((ele, i) => titleCase(answers[i].answer) == titleCase(ele))
     .filter((i) => i)
