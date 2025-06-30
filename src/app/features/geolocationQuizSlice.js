@@ -84,6 +84,10 @@ export const geoQuizSlice = createSlice({
       );
       state.geoQuiz = [action.payload, ...state.geoQuiz];
     },
+    
+    resetGeoQuiz: () => {
+      return initialState;
+    }
   },
 });
 
@@ -95,6 +99,7 @@ export const {
   moveNextAction,
   movePrevAction,
   resetAllAction,
+  resetGeoQuiz,
 } = geoQuizSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

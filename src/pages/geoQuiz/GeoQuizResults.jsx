@@ -7,7 +7,6 @@ import { earnPoints_Number } from "../../helper/helper";
 import { flagResult } from "../../helper/helper";
 import { postResultData } from "../../hooks/usePostResult";
 import "./geoQuizResults.css";
-import { Helmet } from "react-helmet-async";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();

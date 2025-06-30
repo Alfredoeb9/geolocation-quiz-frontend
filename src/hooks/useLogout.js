@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { logout } from "../app/features/AuthContext";
-import { getGeoQuiz } from "../app/features/geolocationQuizSlice";
+import { resetGeoQuiz } from "../app/features/geolocationQuizSlice";
 
 export const useLogout = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export const useLogout = () => {
     localStorage.removeItem("user");
 
     dispatch(logout(null));
-    dispatch(getGeoQuiz(null));
+    dispatch(resetGeoQuiz());
   };
 
   return { logout2 };

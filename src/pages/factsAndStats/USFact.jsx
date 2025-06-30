@@ -1,24 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getGeoQuiz } from "../../app/features/geolocationQuizSlice";
-import CircularIndeterminate from "../../components/spinner/Spinner";
+import { useParams, useNavigate } from "react-router-dom";
 import "./usFact.css";
 import { Helmet } from "react-helmet-async";
-import { postscribe } from "postscribe";
 
 function USFact() {
-  const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
-  const [error, setError] = useState("");
-  const [emptyFields, setEmptyFields] = useState([]);
-  const [activity, setActivity] = useState("");
-  const [numofGeoQuiz, setNumofGeoQuiz] = useState(1);
-  const [checked, setChecked] = useState(false);
   const [data, setData] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchGeoData = async () => {
