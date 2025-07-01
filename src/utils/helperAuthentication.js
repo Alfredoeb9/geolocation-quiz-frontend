@@ -7,7 +7,16 @@ export const setCookie = (name, value, days = 7) => {
   try {
     const expires = new Date();
     expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    
+    // Make sure we're not setting domain for localhost
+    let cookieString = `${name}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    
+    // Only set domain in production
+    if (process.env.NODE_ENV === 'production' && !window.location.hostname.includes('localhost')) {
+      cookieString += `; domain=${window.location.hostname}`;
+    }
+    
+    document.cookie = cookieString;
   } catch (error) {
     console.error('Error setting cookie:', error);
     throw error; // Re-throw to see the actual error

@@ -1,5 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, Tuple } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
+import { thunk } from "redux-thunk";
 import storage from 'redux-persist/lib/storage';
 import geoQuizSlice from "./features/geolocationQuizSlice";
 import userAuthReducer from "./features/AuthContext";
@@ -12,88 +13,43 @@ import resultSlice from "./features/resultSlice";
 
 // const CookieStore = {
 //   setItem: async (key, val, callback) => {
-//     try {
-//       key = key.replace(":", "_");
-//       const value = JSON.parse(val);
-//       const authVal = value.user;
-//       delete value.auth;
-//       localStorage.setItem(key, JSON.stringify(value));
-      
-//       // Add error handling for setCookie
-//       if (authVal) {
-//         setCookie(key, JSON.stringify(authVal));
-//       }
-      
-//       if (callback) {
-//         callback(null);
-//       }
-//       return Promise.resolve(null);
-//     } catch (error) {
-//       console.error('CookieStore setItem error:', error);
-//       if (callback) {
-//         callback(error);
-//       }
-//       return Promise.reject(error);
+//     key = key.replace(":", "_");
+//     const value = JSON.parse(val);
+//     const authVal = value.user;
+//     delete value.auth;
+//     localStorage.setItem(key, JSON.stringify(value));
+//     setCookie(key, JSON.stringify(authVal));
+//     if (callback) {
+//       callback(null);
 //     }
+//     return Promise.resolve(null);
 //   },
-  
 //   getItem: async (key, callback) => {
-//     try {
-//       key = key.replace(":", "_");
-//       const dataItem = localStorage.getItem(key);
-//       let item = {};
-      
-//       if (dataItem) {
-//         item = JSON.parse(dataItem);
-//       }
-      
-//       const authItem = getCookie(key);
-//       if (authItem) {
-//         try {
-//           item.auth = JSON.parse(authItem);
-//         } catch (e) {
-//           console.warn('Failed to parse auth cookie:', e);
-//         }
-//       }
-      
-//       const result = JSON.stringify(item);
-//       if (callback) {
-//         callback(null, result);
-//       }
-//       return Promise.resolve(result);
-//     } catch (error) {
-//       console.error('CookieStore getItem error:', error);
-//       if (callback) {
-//         callback(error, null);
-//       }
-//       return Promise.resolve(null);
+//     key = key.replace(":", "_");
+//     const dataItem = localStorage.getItem(key);
+//     let item = {};
+//     if (dataItem) item = JSON.parse(dataItem);
+//     const authItem = JSON.parse(getCookie(key));
+//     if (authItem) item.auth = authItem;
+//     if (callback) {
+//       callback(null, JSON.stringify(item));
 //     }
+//     return Promise.resolve(JSON.stringify(item));
 //   },
-
 //   removeItem: async (key, callback) => {
-//     try {
-//       key = key.replace(":", "_");
-//       removeCookie(key);
-//       localStorage.removeItem(key);
-      
-//       if (callback) {
-//         callback(null);
-//       }
-//       return Promise.resolve(null);
-//     } catch (error) {
-//       console.error('CookieStore removeItem error:', error);
-//       if (callback) {
-//         callback(error);
-//       }
-//       return Promise.reject(error);
+//     removeCookie(key);
+//     localStorage.removeItem(key);
+//     if (callback) {
+//       callback(null);
 //     }
+//     return Promise.resolve(null);
 //   },
 // };
 
 const persistAuthConfig = {
   key: "root",
   version: 1,
-  storage, // Use default localStorage instead of custom CookieStore
+  storage,
   whitelist: ['user'], // Only persist user data
 };
 
@@ -119,11 +75,7 @@ export const store = configureStore({
           'persist/PAUSE',
           'persist/FLUSH',
         ],
-        ignoredActionsPaths: ['meta.arg', 'payload.timestamp'],
         ignoredPaths: ['_persist'],
       },
-      // Remove thunk as it's included by default in getDefaultMiddleware
     }),
 });
-
-export const persistor = persistStore(store);

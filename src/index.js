@@ -7,6 +7,20 @@ import { store } from "./app/store";
 import "./index.css";
 import App from "./App";
 
+const PersistLoading = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    backgroundColor: 'var(--mainBackground)',
+    color: '#fff',
+    fontSize: '18px'
+  }}>
+    Loading...
+  </div>
+);
+
 const persistor = persistStore(store);
 
 const container = document.getElementById("root");
@@ -15,7 +29,7 @@ const root = createRoot(container);
 root.render(
   <>
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={<PersistLoading />} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>

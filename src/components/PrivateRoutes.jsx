@@ -12,6 +12,10 @@ function PrivateRoutes() {
   const [check, setCheck] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
+  // Add this to check if Redux Persist has rehydrated
+  const { _persist } = useSelector((state) => state);
+  const isRehydrated = _persist?.rehydrated;
+
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
@@ -23,6 +27,11 @@ function PrivateRoutes() {
   }, []);
 
   const isMobile = width <= 400;
+
+  // Show loading while Redux Persist is rehydrating
+  if (!isRehydrated) {
+    return <div>Loading...</div>;
+  }
 
   return user ? (
     <Outlet />

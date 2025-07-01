@@ -5,31 +5,24 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
-import ReactGA from "react-ga4";
+import { login } from "./app/features/AuthContext";
+// import ReactGA from "react-ga4";
 import RootLayout from "./layouts/RootLayout";
-
 import PrivateRoutes from "./components/PrivateRoutes";
-import Home from "./pages/Home";
 import Welcome from "./pages/Welcome";
 import Profile from "./pages/Profile";
 import GeoQuizHome from "./pages/geoQuiz/GeoQuizHome";
-// import GeoQuiz from "./pages/geoQuiz/GeoQuiz";
 import GeoQuizResults from "./pages/geoQuiz/GeoQuizResults";
-// import Quiz from "./pages/geoQuiz/Quiz";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/login/Login";
 import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
-
 import SignUp from "./pages/signup/SignUp";
 import Results from "./pages/myResults/Results";
 import MyResults from "./pages/myResults/MyResults";
-// import GeoMaps from "./pages/geoMaps/GeoMaps";
-import FactsAndStats from "./pages/factsAndStats/FactsAndStats";
-import USFact from "./pages/factsAndStats/USFact";
-
 import "./App.css";
 
 const Loading = () => (
@@ -45,9 +38,12 @@ const Loading = () => (
 );
 
 // Lazy load heavy components
+const Home = lazy(() => import('./pages/Home'));
 const GeoQuiz = lazy(() => import('./pages/geoQuiz/GeoQuiz'));
 const Quiz = lazy(() => import('./pages/geoQuiz/Quiz'));
 const GeoMaps = lazy(() => import('./pages/geoMaps/GeoMaps'));
+const FactsAndStats = lazy(() => import('./pages/factsAndStats/FactsAndStats'));
+const USFact = lazy(() => import('./pages/factsAndStats/USFact'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -68,12 +64,22 @@ const router = createBrowserRouter(
           </Suspense>
         } />
         <Route path="/geoquiz/results" element={<GeoQuizResults />} />
-        <Route path="/facts" element={<FactsAndStats />} />
-        <Route path="/facts/:id" element={<USFact />} />
-
-        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/facts" element={
+          <Suspense fallback={<Loading />}>
+            <FactsAndStats />
+          </Suspense>
+        } />
+        <Route path="/facts/:id" element={
+          <Suspense fallback={<Loading />}>
+            <USFact />
+          </Suspense>
+        } />
       </Route>
-      <Route index element={<Home />} />
+      <Route index element={
+        <Suspense fallback={<Loading />}>
+          <Home />
+        </Suspense>
+      } />
       <Route path="/welcome" element={<Welcome />} />
       <Route path="/verify-email/:id" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
@@ -92,25 +98,28 @@ const router = createBrowserRouter(
 
 function App() {
   const helmetContext = {};
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    // Initialize GA asynchronously
-    if (process.env.REACT_APP_GA_ID && !window.gtag) {
-      ReactGA.initialize(process.env.REACT_APP_GA_ID, {
-        gaOptions: {
-          cookieExpires: 60 * 60 * 24 * 365, // 1 year in seconds
-          cookieDomain: 'auto',
-          cookieFlags: 'SameSite=None; Secure',
-        },
-      });
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
 
-      ReactGA.send({
-        hitType: "pageview",
-        page: window.location.pathname + window.location.search,
-        title: "Pages Data",
-      });
-    }
-  }, []);
+  //   if (user) {
+  //     dispatch(login(user));
+  //   }
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   // Initialize GA asynchronously
+  //   if (process.env.REACT_APP_GA_ID && !window.gtag) {
+  //     ReactGA.initialize(process.env.REACT_APP_GA_ID);
+
+  //     ReactGA.send({
+  //       hitType: "pageview",
+  //       page: window.location.pathname + window.location.search,
+  //       title: "Pages Data",
+  //     });
+  //   }
+  // }, []);
 
   return (
     <HelmetProvider context={helmetContext}>

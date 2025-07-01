@@ -42,9 +42,10 @@ export const useLogin = () => {
       }
 
       // Success
-      localStorage.setItem("user", JSON.stringify(json));
+      // localStorage.setItem("user", JSON.stringify(json));
       dispatch(login(json));
       setIsLoading(false);
+
       return json;
     } catch (error) {
       console.error('Network error:', error);

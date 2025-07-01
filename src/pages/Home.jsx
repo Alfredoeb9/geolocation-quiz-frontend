@@ -8,10 +8,12 @@ import "./Home.css";
 
 function Home() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(resetAllAction());
     dispatch(resetResult());
   });
+  
   return (
     <div className="home">
       <Helmet>
