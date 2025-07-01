@@ -24,6 +24,10 @@ export const userAuthSlice = createSlice({
 
     logout: (state) => {
       state.user = null;
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
     },
     verifyEmail: (state, action) => {
       state.isLoading = false;

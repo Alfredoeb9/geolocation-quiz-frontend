@@ -29,9 +29,25 @@ function PrivateRoutes() {
   const isMobile = width <= 400;
 
   // Show loading while Redux Persist is rehydrating
+  // Show loading while Redux Persist is rehydrating
   if (!isRehydrated) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        color: '#fff',
+        backgroundColor: 'var(--mainBackground)'
+      }}>
+        Loading...
+      </div>
+    );
   }
+
+  // Add debug logging
+  console.log('PrivateRoutes - User:', user);
+  console.log('PrivateRoutes - Rehydrated:', isRehydrated);
 
   return user ? (
     <Outlet />

@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     dispatch(resetAllAction());
     dispatch(resetResult());
-  });
+  }, []);
   
   return (
     <div className="home">

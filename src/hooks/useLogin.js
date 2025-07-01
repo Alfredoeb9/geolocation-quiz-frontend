@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../app/features/AuthContext";
+import { store } from "../app/store";
 
 export const useLogin = () => {
   const dispatch = useDispatch();
@@ -41,9 +42,22 @@ export const useLogin = () => {
         return;
       }
 
+      console.log('Login successful, user data:', json);
       // Success
       // localStorage.setItem("user", JSON.stringify(json));
       dispatch(login(json));
+      // Enhanced debug logging
+      console.log('Redux state after dispatch:', store.getState());
+      // Check localStorage immediately and after delays
+      setTimeout(() => {
+        console.log('localStorage after 100ms:', localStorage.getItem('persist:root'));
+        console.log('All localStorage keys:', Object.keys(localStorage));
+      }, 100);
+      
+      setTimeout(() => {
+        console.log('localStorage after 1000ms:', localStorage.getItem('persist:root'));
+      }, 1000);
+
       setIsLoading(false);
 
       return json;

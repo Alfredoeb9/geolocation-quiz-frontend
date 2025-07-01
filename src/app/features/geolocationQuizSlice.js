@@ -61,10 +61,10 @@ export const geoQuizSlice = createSlice({
       };
     },
     resetAllAction: (state, action) => {
-      storage.removeItem("persist:root");
-      storage.removeItem("persist_root");
-      localStorage.removeItem("persist:root");
-      localStorage.removeItem("persist_root");
+      // storage.removeItem("persist:root");
+      // storage.removeItem("persist_root");
+      // localStorage.removeItem("persist:root");
+      // localStorage.removeItem("persist_root");
       return initialState;
     },
 

@@ -24,10 +24,10 @@ export const resultSlice = createSlice({
       state.result.fill(check, trace, trace + 1);
     },
     resetResult: (state, action) => {
-      storage.removeItem("persist:root");
-      storage.removeItem("persist_root");
-      localStorage.removeItem("persist:root");
-      localStorage.removeItem("persist_root");
+      // storage.removeItem("persist:root");
+      // storage.removeItem("persist_root");
+      // localStorage.removeItem("persist:root");
+      // localStorage.removeItem("persist_root");
       return initialState;
     },
   },

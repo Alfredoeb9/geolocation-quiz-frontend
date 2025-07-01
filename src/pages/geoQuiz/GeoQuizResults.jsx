@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { resetAllAction } from "../../app/features/geolocationQuizSlice";
@@ -10,6 +11,7 @@ import "./geoQuizResults.css";
 
 function GeoQuizResults() {
   const dispatch = useDispatch();
+  const [hasPosted, setHasPosted] = useState(false);
 
   const {
     geoQuiz: { geoQuiz, queue, answers },
@@ -17,19 +19,25 @@ function GeoQuizResults() {
     user,
   } = useSelector((state) => state);
 
-  let cookieUser = localStorage.getItem("user");
+  // let cookieUser = localStorage.getItem("user");
 
   const totalPoints = queue.length * 10;
   const attempts = attempts_Number(result);
   const earnPoints = earnPoints_Number(result, answers, 10);
   const flag = flagResult(totalPoints, earnPoints);
   const id = geoQuiz?._id;
+  const cookieUser = user?.user?.username;
 
   async function postResults() {
+    if (!cookieUser) {
+      console.log('No user found, skipping results post');
+      return;
+    }
+
     const resultData = {
       result,
       quizId: id,
-      username: JSON.parse(cookieUser).username,
+      username: cookieUser,
       attempts,
       points: earnPoints,
       achived: flag ? "Passed" : "Failed",
@@ -49,7 +57,12 @@ function GeoQuizResults() {
     dispatch(resetResult());
   }
 
-  postResults();
+  useEffect(() => {
+    if (cookieUser && !hasPosted) {
+      postResults();
+      setHasPosted(true);
+    }
+  }, [cookieUser, hasPosted]);
 
   return (
     <div className="geoResults__container">
@@ -57,7 +70,7 @@ function GeoQuizResults() {
 
       <div className="geoResults__result">
         <div>
-          <h4>Username:</h4> <span>{user.user.username}</span>
+          <h4>Username:</h4> <span>{cookieUser}</span>
           {/* <span className="bold">{userId || ""}</span> */}
         </div>
         <div>

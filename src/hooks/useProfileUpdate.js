@@ -34,7 +34,7 @@ export const useUpdateProfile = () => {
     if (response.ok) {
       // save to localStorage
 
-      localStorage.setItem("user", JSON.stringify(json));
+      // localStorage.setItem("user", JSON.stringify(json));
       dispatch(updateUser(json));
       setIsLoading(false);
     }

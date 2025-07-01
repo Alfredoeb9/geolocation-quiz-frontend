@@ -52,7 +52,9 @@ function Quiz() {
   // }
 
   function onChecked(check) {
-    setChecked(check);
+    // Normalize the answer immediately when user input is captured
+    const normalizedAnswer = check ? check.toLowerCase().trim() : '';
+    setChecked(normalizedAnswer);
   }
 
   // finish quiz after the last question

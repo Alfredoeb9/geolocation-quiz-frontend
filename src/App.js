@@ -24,6 +24,7 @@ import SignUp from "./pages/signup/SignUp";
 import Results from "./pages/myResults/Results";
 import MyResults from "./pages/myResults/MyResults";
 import "./App.css";
+import { store, persistor } from "./app/store";
 
 const Loading = () => (
   <div style={{ 

@@ -31,17 +31,22 @@ function GeoQuiz() {
         }
       );
 
-      const json = await response.json();
-
       if (!response.ok) {
         setLoading(false);
+        const json = await response.json();
         setError(json.error);
+        return;
       }
 
-      if (response.ok) {
-        setLoading(false);
-        setData(json);
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Response is not JSON');
       }
+
+      const json = await response.json();
+
+      setLoading(false);
+      setData(json);
     };
 
     fetchGeoData();
